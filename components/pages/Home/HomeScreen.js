@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Dimensions, StyleSheet, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  Dimensions,
+  StyleSheet,
+  ScrollView,
+  Image,
+} from 'react-native';
 import {Title} from 'react-native-paper';
 import LogActivity from './LogActivity';
 import firebase from '../../database/Firebase';
@@ -33,7 +40,18 @@ const HomeScreen = ({navigation}) => {
       <View style={styles.upScreen}>
         <View style={styles.titleWrapperUp}>
           {data ? (
-            <Title style={styles.title}>{`Hello, ${nama}`}</Title>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Title style={styles.titleWelcome}>{`Hello,\n${nama} `}</Title>
+              <Image
+                style={styles.logo}
+                source={require('../../../assets/images/welcome.png')}
+              />
+            </View>
           ) : (
             <Title style={styles.title}>Loading ...</Title>
           )}
@@ -98,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBFCFE',
   },
   upScreen: {
-    height: heightScreen * 0.16,
+    height: heightScreen * 0.33,
     backgroundColor: '#1E4E5F',
   },
   downScreen: {
@@ -108,10 +126,20 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   title: {
-    fontSize: 30,
+    fontSize: 20,
     fontFamily: 'Poppins-Regular',
     color: '#FFFFFF',
-    padding: 14,
+    // padding: 14,
+    // marginLeft: 0,
+  },
+  titleWelcome: {
+    // borderWidth: 1,
+    fontSize: 35,
+    fontFamily: 'Poppins-Regular',
+    color: '#FFFFFF',
+    marginBottom: 70,
+    paddingVertical: 40,
+    marginLeft: 20,
   },
   titleLog: {
     fontSize: 26,
@@ -124,8 +152,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   titleWrapperUp: {
-    paddingVertical: 25,
-    padding: 20,
+    // paddingVertical: 25,
+    // marginLeft: -10,
+    // padding: 20,
+    // margin: 20,
+    marginVertical: -40,
   },
   icon: {
     marginLeft: 5,
@@ -168,5 +199,17 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#FFF',
+  },
+  logo: {
+    // borderWidth: 1,
+    height: 390,
+    width: 120,
+    left: -20,
+    bottom: 50,
+    // resizeMode: 'cover',
+    // marginBottom: 10,
+    // left: 10,
+    // marginLeft: 20,
+    // marginTop: 30,
   },
 });

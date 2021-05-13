@@ -41,12 +41,12 @@ const HomeScreen = ({navigation}) => {
       </View>
       <View style={styles.downScreen}>
         <View style={styles.titleWrapper}>
-          {/* <Fontisto
+          <Fontisto
             name="history"
             size={26}
-            style={styles.icon}
+            style={{marginRight: 10}}
             color="#FFB156"
-          /> */}
+          />
           <Title style={styles.titleLog}>Last alarm status</Title>
         </View>
         <View style={{marginLeft: 30, flexDirection: 'row', marginBottom: -50}}>
@@ -80,6 +80,8 @@ const HomeScreen = ({navigation}) => {
             </View>
             <View style={styles.itemLocationWrapper}>
               <Text style={styles.textAlamat}>{alamat}</Text>
+              <Text style={styles.text}>{tanggalAlarm}</Text>
+              <Text style={styles.text}>{waktuAlarm}</Text>
             </View>
           </View>
         </View>
@@ -120,7 +122,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 5,
     flexDirection: 'row',
-    alignItems: 'center',
   },
   titleWrapperUp: {
     paddingVertical: 25,
@@ -155,10 +156,17 @@ const styles = StyleSheet.create({
   },
   itemLocationWrapper: {
     alignItems: 'center',
+    // justifyContent: 'center',
   },
   textAlamat: {
+    alignItems: 'center',
+    justifyContent: 'center',
     color: '#FFF',
     fontSize: 20,
-    marginTop: '15%',
+    marginBottom: 20,
+    // marginTop: '15%',
+  },
+  text: {
+    color: '#FFF',
   },
 });

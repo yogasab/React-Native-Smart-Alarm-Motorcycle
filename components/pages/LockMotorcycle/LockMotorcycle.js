@@ -79,7 +79,7 @@ const LockMotorcycle = ({navigation}) => {
 
         <View style={styles.wrapperButton}>
           <View style={styles.wrapperOnButton}>
-            <TouchableOpacity style={styles.onTouch}>
+            <TouchableOpacity onPress={handleAlarmOn} style={styles.onTouch}>
               <Image
                 style={styles.buttonLogo}
                 source={require('../../../assets/images/on-button.png')}
@@ -88,7 +88,7 @@ const LockMotorcycle = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.wrapperOffButton}>
-            <TouchableOpacity style={styles.onTouch}>
+            <TouchableOpacity onPress={handleAlarmOff} style={styles.onTouch}>
               <Image
                 style={styles.buttonLogo}
                 source={require('../../../assets/images/off-button.png')}

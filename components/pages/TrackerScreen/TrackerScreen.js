@@ -10,12 +10,6 @@ import {
 import MapView, {Callout, Circle, Marker} from 'react-native-maps';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Geolocation from '@react-native-community/geolocation';
-// import RNLocation from 'react-native-location';
-
-// RNLocation.configure({
-//   distanceFilter: 401,
-// });
-// Geolocation.setRNConfiguration(config);
 
 const initialState = {
   latitude: null,
@@ -28,7 +22,6 @@ const TrackerScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(initialState);
 
   useEffect(() => {
-    // getCurrentLocation();
     Geolocation.getCurrentPosition(
       position => {
         const {latitude, longitude} = position.coords;
@@ -37,7 +30,6 @@ const TrackerScreen = () => {
           latitude,
           longitude,
         });
-        // alert(JSON.stringify(position));
       },
       error => alert(error.message),
       {

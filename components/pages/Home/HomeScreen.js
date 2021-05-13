@@ -10,6 +10,7 @@ const heightScreen = Dimensions.get('window').height;
 
 const HomeScreen = ({navigation}) => {
   const [data, setData] = useState([]);
+  const {status, nama, tanggalAlarm, waktuAlarm, alamat} = data;
   const fetchData = () => {
     let dataFirebase = firebase
       .database()
@@ -27,19 +28,12 @@ const HomeScreen = ({navigation}) => {
   if (data) {
     keyFirebase = Object.keys(data);
   }
-
-  // const perData = keyFirebase.map(item => {
-  //   console.log(data[item]);
-  // });
-  // console.log(data);
-  // console.log('data ', data.alamat);
-  // console.log(data);
   return (
     <View style={styles.container}>
       <View style={styles.upScreen}>
         <View style={styles.titleWrapperUp}>
           {data ? (
-            <Title style={styles.title}>{`Hello, ${data.nama}`}</Title>
+            <Title style={styles.title}>{`Hello, ${nama}`}</Title>
           ) : (
             <Title style={styles.title}>Loading ...</Title>
           )}
@@ -47,20 +41,20 @@ const HomeScreen = ({navigation}) => {
       </View>
       <View style={styles.downScreen}>
         <View style={styles.titleWrapper}>
-          <Fontisto
+          {/* <Fontisto
             name="history"
             size={26}
             style={styles.icon}
             color="#FFB156"
-          />
-          <Title style={styles.titleLog}>Last History</Title>
+          /> */}
+          <Title style={styles.titleLog}>Last alarm status</Title>
         </View>
         <View style={{marginLeft: 30, flexDirection: 'row', marginBottom: -50}}>
           {data ? (
             <LogActivity
-              status={data.status}
-              date={data.tanggalAlarm}
-              time={data.waktuAlarm}
+              status={status}
+              date={tanggalAlarm}
+              time={waktuAlarm}
             />
           ) : (
             <LogActivity status="Loading" date="Loading" time="Loading" />
@@ -71,42 +65,24 @@ const HomeScreen = ({navigation}) => {
             marginVertical: 5,
             marginLeft: 30,
             marginBottom: 25,
-            flexDirection: 'row',
-            alignItems: 'center',
+            // alignItems: 'center',
           }}>
-          <Entypo
-            name="location"
-            size={26}
-            style={styles.icon}
-            color="#FFB156"
-          />
-          <Title style={styles.titleLog}>Location History</Title>
-        </View>
-        <ScrollView
-          style={{marginHorizontal: 35, marginTop: -20}}
-          scrollEnabled
-          showsVerticalScrollIndicator
-          stickyHeaderIndices>
-          <View
-            style={{
-              borderWidth: 1,
-              justifyContent: 'center',
-              borderRadius: 20,
-              backgroundColor: '#1E4E5F',
-              padding: 10,
-              paddingHorizontal: 15,
-            }}>
-            {data ? (
-              <Text style={{color: '#FFFFFF', fontFamily: 'Roboto-Black'}}>
-                {data.alamat}
-              </Text>
-            ) : (
-              <Text style={{color: '#FFFFFF', fontFamily: 'Roboto-Black'}}>
-                Loading ...
-              </Text>
-            )}
+          {/* <Title style={styles.titleLog}>Location History</Title> */}
+          <View style={styles.locationHistoryWrapper}>
+            <View style={styles.locationWrapper}>
+              <Title style={styles.titleStatus}>Last location status</Title>
+              <Entypo
+                name="location"
+                size={42}
+                style={styles.icon}
+                color="#FFFFFF"
+              />
+            </View>
+            <View style={styles.itemLocationWrapper}>
+              <Text style={styles.textAlamat}>{alamat}</Text>
+            </View>
           </View>
-        </ScrollView>
+        </View>
       </View>
     </View>
   );
@@ -117,9 +93,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#009387',
-    // borderWidth: 10,
-    // borderColor: '#009387',
     backgroundColor: '#FBFCFE',
   },
   upScreen: {
@@ -140,8 +113,7 @@ const styles = StyleSheet.create({
   },
   titleLog: {
     fontSize: 26,
-    fontFamily: 'OpenSans-SemiBold',
-    color: '#000',
+    fontFamily: 'Poppins-SemiBold',
   },
   titleWrapper: {
     marginHorizontal: 30,
@@ -149,26 +121,44 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     flexDirection: 'row',
     alignItems: 'center',
-    // alignItems: 'center',
   },
   titleWrapperUp: {
-    paddingVertical: 30,
+    paddingVertical: 25,
     padding: 20,
   },
-  locationWrapper: {
-    // borderWidth: 2,
-    alignItems: 'center',
-    // backgroundColor: 'black',
-  },
-  locationTitle: {
-    fontFamily: 'Poppins-Regular',
-    fontSize: 26,
-    marginTop: -30,
-    backgroundColor: 'grey',
-    padding: 110,
-  },
   icon: {
+    marginLeft: 5,
+    // left: 20,
+    // top: 10,
+  },
+  locationWrapper: {
+    flexDirection: 'row',
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  titleStatus: {
+    color: '#FFFFFF',
+    fontFamily: 'OpenSans-SemiBold',
+    fontSize: 24,
+    backgroundColor: '#1E4E5F',
+    marginTop: 5,
     marginRight: 5,
-    marginTop: -4,
+    // left: 10,
+    // marginTop: 5,
+  },
+  locationHistoryWrapper: {
+    backgroundColor: '#1E4E5F',
+    width: '90%',
+    height: '60%',
+    borderRadius: 15,
+  },
+  itemLocationWrapper: {
+    alignItems: 'center',
+  },
+  textAlamat: {
+    color: '#FFF',
+    fontSize: 20,
+    marginTop: '15%',
   },
 });

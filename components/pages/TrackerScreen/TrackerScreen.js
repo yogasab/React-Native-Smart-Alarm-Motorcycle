@@ -51,6 +51,7 @@ const TrackerScreen = () => {
   // console.log(currentPosition);
   // console.log(pin);
   // console.log(region);
+  // console.log(wodkowmdowdm);
 
   return currentPosition.latitude ? (
     <View style={styles.container}>

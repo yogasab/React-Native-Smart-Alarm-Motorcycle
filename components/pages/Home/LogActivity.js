@@ -1,40 +1,45 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import {Title} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const LogActivity = ({status, date, time}) => {
   if (status == '1') {
     return (
       <View style={styles.itemOff}>
-        <View style={styles.itemLeftOn}>
+        <View style={styles.iconWrapper}>
           <MaterialCommunityIcons
             style={styles.icon}
             name="engine"
-            size={31}
+            size={43}
             color="#FFFFFF"
           />
+          <Title style={styles.titleStatus}>Alarm Status</Title>
+        </View>
+        <View style={styles.itemLeftOn}>
           <Text style={styles.statusOn}>{status}</Text>
           <Text style={styles.text}>{date}</Text>
           <Text style={styles.text}>{time}</Text>
         </View>
-        <View></View>
       </View>
     );
   } else {
     return (
       <View style={styles.item}>
-        <View style={styles.itemLeftOn}>
+        <View style={styles.iconWrapper}>
           <MaterialCommunityIcons
             style={styles.icon}
-            name="engine"
-            size={31}
+            name="engine-off"
+            size={43}
             color="#FFFFFF"
           />
+          <Title style={styles.titleStatus}>Alarm Status</Title>
+        </View>
+        <View style={styles.itemLeftOn}>
           <Text style={styles.statusOn}>{status}</Text>
           <Text style={styles.text}>{date}</Text>
           <Text style={styles.text}>{time}</Text>
         </View>
-        <View></View>
       </View>
     );
   }
@@ -47,9 +52,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '70%',
     marginTop: 5,
-    // backgroundColor: '#1E4E5F',
     backgroundColor: '#FFB156',
-    // padding: 15,
     borderRadius: 20,
     shadowColor: '#000',
     shadowOffset: {
@@ -66,8 +69,7 @@ const styles = StyleSheet.create({
     height: '70%',
     marginTop: 5,
     backgroundColor: '#1E4E5F',
-    // padding: 15,
-    borderRadius: 20,
+    borderRadius: 15,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -79,15 +81,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   itemLeftOn: {
-    // flexDirection: 'row',
+    marginBottom: -10,
     alignItems: 'center',
   },
   statusOn: {
     fontFamily: 'Poppins-Regular',
-    fontSize: 26,
+    fontSize: 30,
     color: '#FFFFFF',
   },
   text: {
     color: '#FFFFFF',
+    fontSize: 20,
+  },
+  icon: {
+    left: 25,
+    top: -20,
+  },
+  iconWrapper: {
+    marginTop: -5,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  titleStatus: {
+    color: '#FFFFFF',
+    fontFamily: 'OpenSans-SemiBold',
+    fontSize: 26,
+    left: 95,
+    bottom: 17,
   },
 });

@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   Dimensions,
   Image,
-  Alert,
 } from 'react-native';
 import {Title} from 'react-native-paper';
 import firebase from '../../database/Firebase';
+import {notification} from '../../notifications/Notifikasi';
 
 const heightScreen = Dimensions.get('window').height;
 
@@ -31,7 +31,13 @@ const LockMotorcycle = ({navigation}) => {
         RELAY: 'ON',
       })
       .then(() => {
-        console.log('Alarm Updated ON');
+        notification.configure();
+        notification.createChannel('1');
+        notification.sendNotification(
+          '1',
+          'Smart Alarm Motorcycle',
+          'Alarm ON succesfully',
+        );
       });
   };
 
@@ -43,13 +49,18 @@ const LockMotorcycle = ({navigation}) => {
         RELAY: 'OFF',
       })
       .then(() => {
-        console.log('Alarm OFF');
+        notification.configure();
+        notification.createChannel('1');
+        notification.sendNotification(
+          '1',
+          'Smart Alarm Motorcycle',
+          'Alarm OFF please watch your motorcycle',
+        );
       });
   };
 
   useEffect(() => {
     fetchDataRelay();
-    // navigation.addListener('focus', () => setLoading(!loading));
   }, []);
   console.log(relay);
   return (

@@ -5,16 +5,17 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const LogActivity = ({status, date, time}) => {
   if (status == '1') {
+    status = 'ON';
     return (
       <View style={styles.itemOff}>
         <View style={styles.iconWrapper}>
+          <Title style={styles.titleStatus}>Smart Card</Title>
           <MaterialCommunityIcons
             style={styles.icon}
-            name="engine"
-            size={43}
+            name="engine-outline"
+            size={40}
             color="#FFFFFF"
           />
-          <Title style={styles.titleStatus}>Alarm Status</Title>
         </View>
         <View style={styles.itemLeftOn}>
           <Text style={styles.statusOn}>{status}</Text>
@@ -24,16 +25,17 @@ const LogActivity = ({status, date, time}) => {
       </View>
     );
   } else {
+    status = 'OFF';
     return (
       <View style={styles.item}>
         <View style={styles.iconWrapper}>
+          <Title style={styles.titleStatus}>Smart Card</Title>
           <MaterialCommunityIcons
             style={styles.icon}
-            name="engine-off"
-            size={43}
+            name="engine-off-outline"
+            size={40}
             color="#FFFFFF"
           />
-          <Title style={styles.titleStatus}>Alarm Status</Title>
         </View>
         <View style={styles.itemLeftOn}>
           <Text style={styles.statusOn}>{status}</Text>
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '70%',
     marginTop: 5,
-    backgroundColor: '#FFB156',
+    backgroundColor: '#F36A1D',
     borderRadius: 20,
     shadowColor: '#000',
     shadowOffset: {
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '70%',
     marginTop: 5,
-    backgroundColor: '#1E4E5F',
+    backgroundColor: '#0582CA',
     borderRadius: 15,
     shadowColor: '#000',
     shadowOffset: {
@@ -81,12 +83,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   itemLeftOn: {
-    marginBottom: -10,
+    paddingBottom: 10,
     alignItems: 'center',
   },
   statusOn: {
-    fontFamily: 'Poppins-Regular',
-    fontSize: 30,
+    paddingTop: 20,
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 35,
     color: '#FFFFFF',
   },
   text: {
@@ -94,19 +97,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   icon: {
-    left: 25,
-    top: -20,
+    left: 100,
+    bottom: 2,
   },
   iconWrapper: {
-    marginTop: -5,
+    borderBottomWidth: 2,
+    borderBottomColor: 'lightgrey',
+    marginTop: -15,
     flexDirection: 'row',
-    alignItems: 'center',
+    paddingTop: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   titleStatus: {
+    // borderWidth: 1,
     color: '#FFFFFF',
-    fontFamily: 'OpenSans-SemiBold',
-    fontSize: 26,
-    left: 95,
-    bottom: 17,
+    fontFamily: 'Poppins-Regular',
+    fontSize: 22,
+    marginHorizontal: 15,
+    marginTop: 5,
   },
 });

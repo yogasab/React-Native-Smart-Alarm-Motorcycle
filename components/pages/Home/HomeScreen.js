@@ -10,8 +10,8 @@ import {
 import {Title} from 'react-native-paper';
 import LogActivity from './LogActivity';
 import firebase from '../../database/Firebase';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const heightScreen = Dimensions.get('window').height;
 
@@ -57,17 +57,12 @@ const HomeScreen = ({navigation}) => {
           )}
         </View>
       </View>
+
       <View style={styles.downScreen}>
         <View style={styles.titleWrapper}>
-          <Fontisto
-            name="history"
-            size={26}
-            style={{marginRight: 10}}
-            color="#FFB156"
-          />
-          <Title style={styles.titleLog}>Last alarm status</Title>
+          <Title style={styles.titleLog}>Alarm History</Title>
         </View>
-        <View style={{marginLeft: 30, flexDirection: 'row', marginBottom: -50}}>
+        <View style={{marginLeft: 30, flexDirection: 'row', marginBottom: -40}}>
           {data ? (
             <LogActivity
               status={status}
@@ -78,26 +73,24 @@ const HomeScreen = ({navigation}) => {
             <LogActivity status="Loading" date="Loading" time="Loading" />
           )}
         </View>
+
         <View
           style={{
-            marginVertical: 5,
             marginLeft: 30,
-            marginBottom: 25,
-            // alignItems: 'center',
+            marginBottom: 120,
           }}>
-          {/* <Title style={styles.titleLog}>Location History</Title> */}
           <View style={styles.locationHistoryWrapper}>
             <View style={styles.locationWrapper}>
-              <Title style={styles.titleStatus}>Last location status</Title>
-              <Entypo
-                name="location"
-                size={42}
+              <Title style={styles.titleStatus}>Last location</Title>
+              <Ionicons
+                name="md-location-outline"
+                size={38}
                 style={styles.icon}
                 color="#FFFFFF"
               />
             </View>
             <View style={styles.itemLocationWrapper}>
-              <Text style={styles.textAlamat}>{alamat}</Text>
+              {/* <Text style={styles.textAlamat}>{alamat}</Text> */}
               <Text style={styles.text}>{tanggalAlarm}</Text>
               <Text style={styles.text}>{waktuAlarm}</Text>
             </View>
@@ -129,8 +122,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Poppins-Regular',
     color: '#FFFFFF',
-    // padding: 14,
-    // marginLeft: 0,
   },
   titleWelcome: {
     // borderWidth: 1,
@@ -142,8 +133,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   titleLog: {
-    fontSize: 26,
-    fontFamily: 'Poppins-SemiBold',
+    fontSize: 30,
+    fontFamily: 'Roboto-Bold',
+    color: 'grey',
   },
   titleWrapper: {
     marginHorizontal: 30,
@@ -152,64 +144,45 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   titleWrapperUp: {
-    // paddingVertical: 25,
-    // marginLeft: -10,
-    // padding: 20,
-    // margin: 20,
     marginVertical: -40,
   },
   icon: {
-    marginLeft: 5,
-    // left: 20,
-    // top: 10,
+    left: 85,
+    bottom: 2,
   },
   locationWrapper: {
+    borderBottomWidth: 2,
+    borderBottomColor: 'lightgrey',
+    marginTop: -15,
     flexDirection: 'row',
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: 20,
   },
   titleStatus: {
     color: '#FFFFFF',
-    fontFamily: 'OpenSans-SemiBold',
-    fontSize: 24,
-    backgroundColor: '#1E4E5F',
+    fontFamily: 'Poppins-Regular',
+    fontSize: 23,
+    marginHorizontal: 15,
     marginTop: 5,
-    marginRight: 5,
-    // left: 10,
-    // marginTop: 5,
   },
   locationHistoryWrapper: {
-    backgroundColor: '#1E4E5F',
+    marginTop: -10,
+    backgroundColor: '#003554',
     width: '90%',
-    height: '60%',
+    height: '70%',
     borderRadius: 15,
   },
   itemLocationWrapper: {
     alignItems: 'center',
-    // justifyContent: 'center',
-  },
-  textAlamat: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#FFF',
-    fontSize: 20,
-    marginBottom: 20,
-    // marginTop: '15%',
+    marginTop: 20,
   },
   text: {
-    color: '#FFF',
+    color: '#FFFFFF',
+    fontSize: 20,
   },
   logo: {
-    // borderWidth: 1,
     height: 390,
     width: 120,
     left: -20,
     bottom: 50,
-    // resizeMode: 'cover',
-    // marginBottom: 10,
-    // left: 10,
-    // marginLeft: 20,
-    // marginTop: 30,
   },
 });

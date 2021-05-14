@@ -3,7 +3,6 @@ import {Image, StyleSheet, Text, View, Linking, Button} from 'react-native';
 // import firestore from '@react-native-firebase/firestore';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
 const AboutSetting = () => {
   return (
     <View style={styles.container}>

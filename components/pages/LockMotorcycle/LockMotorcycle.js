@@ -36,7 +36,7 @@ const LockMotorcycle = ({navigation}) => {
         notification.sendNotification(
           '1',
           'Smart Alarm Motorcycle',
-          'Alarm ON succesfully',
+          `Alarm ON please watch your motorcycle`,
         );
       });
   };
@@ -54,7 +54,7 @@ const LockMotorcycle = ({navigation}) => {
         notification.sendNotification(
           '1',
           'Smart Alarm Motorcycle',
-          'Alarm OFF please watch your motorcycle',
+          `Alarm OFF please watch your motorcycle`,
         );
       });
   };
@@ -145,7 +145,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 15,
     color: '#FFFFFF',
-    borderWidth: 1,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    elevation: 24,
   },
   container: {
     flex: 1,

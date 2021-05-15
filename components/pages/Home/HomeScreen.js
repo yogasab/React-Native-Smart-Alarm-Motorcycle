@@ -62,40 +62,62 @@ const HomeScreen = ({navigation}) => {
         <View style={styles.titleWrapper}>
           <Title style={styles.titleLog}>Alarm History</Title>
         </View>
-        <View style={{marginLeft: 30, flexDirection: 'row', marginBottom: -40}}>
-          {data ? (
-            <LogActivity
-              status={status}
-              date={tanggalAlarm}
-              time={waktuAlarm}
-            />
-          ) : (
-            <LogActivity status="Loading" date="Loading" time="Loading" />
-          )}
-        </View>
-
-        <View
-          style={{
-            marginLeft: 30,
-            marginBottom: 120,
-          }}>
-          <View style={styles.locationHistoryWrapper}>
-            <View style={styles.locationWrapper}>
-              <Title style={styles.titleStatus}>Last location</Title>
-              <Ionicons
-                name="md-location-outline"
-                size={38}
-                style={styles.icon}
-                color="#FFFFFF"
+        <ScrollView>
+          <View style={{marginLeft: 30, flexDirection: 'row'}}>
+            {data ? (
+              <LogActivity
+                status={status}
+                date={tanggalAlarm}
+                time={waktuAlarm}
               />
-            </View>
-            <View style={styles.itemLocationWrapper}>
-              {/* <Text style={styles.textAlamat}>{alamat}</Text> */}
-              <Text style={styles.text}>{tanggalAlarm}</Text>
-              <Text style={styles.text}>{waktuAlarm}</Text>
+            ) : (
+              <LogActivity status="Loading" date="Loading" time="Loading" />
+            )}
+          </View>
+
+          <View
+            style={{
+              // alignItems: 'center',
+              // justifyContent: 'center',
+              // alignContent: 'center',
+              marginTop: -30,
+              marginBottom: 50,
+              marginHorizontal: 30,
+              borderRadius: 5,
+              backgroundColor: 'lightgrey',
+            }}>
+            <Text
+              style={{
+                fontSize: 23,
+                fontFamily: 'Poppins-Regular',
+              }}>
+              Hello
+            </Text>
+          </View>
+
+          <View
+            style={{
+              marginLeft: 30,
+              marginBottom: 150,
+            }}>
+            <View style={styles.locationHistoryWrapper}>
+              <View style={styles.locationWrapper}>
+                <Title style={styles.titleStatus}>Last location</Title>
+                <Ionicons
+                  name="md-location-outline"
+                  size={38}
+                  style={styles.icon}
+                  color="#FFFFFF"
+                />
+              </View>
+              <View style={styles.itemLocationWrapper}>
+                {/* <Text style={styles.textAlamat}>{alamat}</Text> */}
+                <Text style={styles.text}>{tanggalAlarm}</Text>
+                <Text style={styles.text}>{waktuAlarm}</Text>
+              </View>
             </View>
           </View>
-        </View>
+        </ScrollView>
       </View>
     </View>
   );

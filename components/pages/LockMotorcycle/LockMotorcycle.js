@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Image,
+  Animated,
 } from 'react-native';
 import {Title} from 'react-native-paper';
 import firebase from '../../database/Firebase';
@@ -15,6 +16,7 @@ const heightScreen = Dimensions.get('window').height;
 
 const LockMotorcycle = ({navigation}) => {
   const [relay, setRelay] = useState('');
+  const opacity = useState(new Animated.Value(0))[1];
 
   const fetchDataRelay = () => {
     let databaseRelayFirebase = firebase.database().ref('/' + 'RELAY');
@@ -31,13 +33,19 @@ const LockMotorcycle = ({navigation}) => {
         RELAY: 'ON',
       })
       .then(() => {
-        notification.configure();
-        notification.createChannel('1');
-        notification.sendNotification(
-          '1',
-          'Smart Alarm Motorcycle',
-          `Alarm ON please watch your motorcycle`,
-        );
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true,
+        });
+        // Send Local Notifcations
+        // notification.configure();
+        // notification.createChannel('1');
+        // notification.sendNotification(
+        //   '1',
+        //   'Smart Alarm Motorcycle',
+        //   `Alarm ON please watch your motorcycle`,
+        // );
       });
   };
 
@@ -49,32 +57,38 @@ const LockMotorcycle = ({navigation}) => {
         RELAY: 'OFF',
       })
       .then(() => {
-        notification.configure();
-        notification.createChannel('1');
-        notification.sendNotification(
-          '1',
-          'Smart Alarm Motorcycle',
-          `Alarm OFF please watch your motorcycle`,
-        );
+        Animated.timing(opacity, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+        });
+        // Send Local Notifcations
+        // notification.configure();
+        // notification.createChannel('1');
+        // notification.sendNotification(
+        //   '1',
+        //   'Smart Alarm Motorcycle',
+        //   `Alarm OFF please watch your motorcycle`,
+        // );
       });
   };
 
   useEffect(() => {
     fetchDataRelay();
   }, []);
-  console.log(relay);
+  // console.log(relay);
   return (
     <View style={styles.container}>
       <View style={styles.upScreen}>
         <View style={styles.status}>
           <Text style={styles.textStatus}>Status</Text>
           {relay == 'OFF' ? (
-            <Image
+            <Animated.Image
               style={styles.gambarOff}
               source={require('../../../assets/images/motor-off.png')}
             />
           ) : (
-            <Image
+            <Animated.Image
               style={styles.gambar}
               source={require('../../../assets/images/motor-on.png')}
             />
@@ -134,8 +148,11 @@ const styles = StyleSheet.create({
   textStatus: {
     fontFamily: 'OpenSans-Bold',
     fontSize: 26,
-    borderRadius: 5,
     color: '#FFFFFF',
+    // borderWidth: 2,
+    borderBottomWidth: 1,
+    borderBottomColor: '#FFFFFF',
+    paddingHorizontal: 10,
   },
   textCard: {
     fontSize: 30,

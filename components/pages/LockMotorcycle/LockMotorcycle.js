@@ -39,13 +39,13 @@ const LockMotorcycle = ({navigation}) => {
           useNativeDriver: true,
         });
         // Send Local Notifcations
-        // notification.configure();
-        // notification.createChannel('1');
-        // notification.sendNotification(
-        //   '1',
-        //   'Smart Alarm Motorcycle',
-        //   `Alarm ON please watch your motorcycle`,
-        // );
+        notification.configure();
+        notification.createChannel('1');
+        notification.sendNotification(
+          '1',
+          'Smart Alarm Motorcycle',
+          `Alarm ON please watch your surroundings`,
+        );
       });
   };
 
@@ -63,20 +63,20 @@ const LockMotorcycle = ({navigation}) => {
           useNativeDriver: true,
         });
         // Send Local Notifcations
-        // notification.configure();
-        // notification.createChannel('1');
-        // notification.sendNotification(
-        //   '1',
-        //   'Smart Alarm Motorcycle',
-        //   `Alarm OFF please watch your motorcycle`,
-        // );
+        notification.configure();
+        notification.createChannel('1');
+        notification.sendNotification(
+          '1',
+          'Smart Alarm Motorcycle',
+          `Alarm OFF please keep an eyes on motorcycle`,
+        );
       });
   };
 
   useEffect(() => {
     fetchDataRelay();
   }, []);
-  // console.log(relay);
+
   return (
     <View style={styles.container}>
       <View style={styles.upScreen}>

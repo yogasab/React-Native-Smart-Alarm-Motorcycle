@@ -83,11 +83,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   itemLeftOn: {
-    paddingBottom: 10,
     alignItems: 'center',
+    marginBottom: -40,
   },
   statusOn: {
-    paddingTop: 20,
+    marginTop: 20,
     fontFamily: 'Poppins-SemiBold',
     fontSize: 35,
     color: '#FFFFFF',
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   iconWrapper: {
     borderBottomWidth: 2,
     borderBottomColor: 'lightgrey',
-    marginTop: -10,
+    marginTop: -55,
     flexDirection: 'row',
     // paddingTop: 20,
     // alignItems: 'center',

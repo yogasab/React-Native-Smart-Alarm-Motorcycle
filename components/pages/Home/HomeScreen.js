@@ -100,7 +100,7 @@ const HomeScreen = ({navigation}) => {
               </Text>
             </View>
             <View>
-              <Text>
+              <Text style={{fontSize: 15, color: '#000'}}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. A
                 vitae, minus consectetur modi temporibus mollitia quod dolor
                 dolorem quisquam fugit unde minima dignissimos laborum itaque
@@ -112,7 +112,8 @@ const HomeScreen = ({navigation}) => {
           <View
             style={{
               marginLeft: 30,
-              marginBottom: 150,
+              marginBottom: '90%',
+              // flex: 1,
             }}>
             <View style={styles.locationHistoryWrapper}>
               <View style={styles.locationWrapper}>
@@ -202,7 +203,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   locationHistoryWrapper: {
-    marginTop: -10,
+    // marginTop: -10,
     backgroundColor: '#003554',
     width: '90%',
     height: '70%',
@@ -210,7 +211,9 @@ const styles = StyleSheet.create({
   },
   itemLocationWrapper: {
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 30,
+    // borderWidth: 2,
+    marginBottom: -100,
   },
   text: {
     color: '#FFFFFF',

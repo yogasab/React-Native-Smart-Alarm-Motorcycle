@@ -103,9 +103,9 @@ const styles = StyleSheet.create({
   iconWrapper: {
     borderBottomWidth: 2,
     borderBottomColor: 'lightgrey',
-    marginTop: -15,
+    marginTop: -10,
     flexDirection: 'row',
-    paddingTop: 20,
+    // paddingTop: 20,
     // alignItems: 'center',
     // justifyContent: 'center',
   },

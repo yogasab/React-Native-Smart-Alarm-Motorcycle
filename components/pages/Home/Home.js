@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, Text, View, Button} from 'react-native';
+import {View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+// import {createDrawerNavigator} from '@react-navigation/drawer';
 import MainTabScreen from '../../MainTabScreen';
-import DrawerContent from '../../DrawerContent';
-import ProfileSettings from '../ProfileScreen/ProfileSettings';
-import ProfileScreen from '../ProfileScreen/ProfileScreen';
+// import DrawerContent from '../../DrawerContent';
+// import ProfileSettings from '../ProfileScreen/ProfileSettings';
+// import ProfileScreen from '../ProfileScreen/ProfileScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import AccountSetting from '../SettingsScreen/AccountSetting';
 import AboutSetting from '../SettingsScreen/AboutSetting';
@@ -29,9 +29,6 @@ const Home = () => {
             component={AccountSetting}
           />
           <Stack.Screen name="About" component={AboutSetting} />
-          {/* <Drawer.Screen name="ProfileSettings" component={ProfileSettings} /> */}
-          {/* <Drawer.Screen name="ProfileScreen" component={ProfileScreen} /> */}
-          {/* </Drawer.Navigator> */}
         </Stack.Navigator>
       </NavigationContainer>
     </>

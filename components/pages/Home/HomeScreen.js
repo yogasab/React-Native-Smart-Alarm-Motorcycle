@@ -10,7 +10,6 @@ import {
 import {Title} from 'react-native-paper';
 import LogActivity from './LogActivity';
 import firebase from '../../database/Firebase';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const heightScreen = Dimensions.get('window').height;
@@ -36,34 +35,37 @@ const HomeScreen = ({navigation}) => {
     keyFirebase = Object.keys(data);
   }
   return (
-    <View style={styles.container}>
-      <View style={styles.upScreen}>
-        <View style={styles.titleWrapperUp}>
-          {data ? (
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Title style={styles.titleWelcome}>{`Hello,\n${nama} `}</Title>
-              <Image
-                style={styles.logo}
-                source={require('../../../assets/images/welcome.png')}
-              />
-            </View>
-          ) : (
-            <Title style={styles.title}>Loading ...</Title>
-          )}
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.upScreen}>
+          <View style={styles.titleWrapperUp}>
+            {data ? (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Title style={styles.titleWelcome}>{`Hello,\n${nama} `}</Title>
+                <Image
+                  style={styles.logo}
+                  source={require('../../../assets/images/welcome.png')}
+                />
+              </View>
+            ) : (
+              <Title style={styles.title}>Loading ...</Title>
+            )}
+          </View>
         </View>
-      </View>
 
-      <View style={styles.downScreen}>
-        <View style={styles.titleWrapper}>
-          <Title style={styles.titleLog}>Alarm History</Title>
-        </View>
-        <ScrollView>
-          <View style={{marginLeft: 30, flexDirection: 'row'}}>
+        <View style={styles.downScreen}>
+          <View style={styles.titleWrapper}>
+            <Title style={styles.titleLog}>Alarm History</Title>
+          </View>
+          {/* <ScrollView> */}
+
+          <View
+            style={{marginLeft: 30, flexDirection: 'row', marginBottom: 10}}>
             {data ? (
               <LogActivity
                 status={status}
@@ -80,19 +82,31 @@ const HomeScreen = ({navigation}) => {
               // alignItems: 'center',
               // justifyContent: 'center',
               // alignContent: 'center',
-              marginTop: -30,
-              marginBottom: 50,
+              marginVertical: -60,
+              // paddingBottom: 50,
+              marginBottom: 30,
               marginHorizontal: 30,
-              borderRadius: 5,
+              borderRadius: 10,
               backgroundColor: 'lightgrey',
             }}>
-            <Text
-              style={{
-                fontSize: 23,
-                fontFamily: 'Poppins-Regular',
-              }}>
-              Hello
-            </Text>
+            <View>
+              <Text
+                style={{
+                  fontSize: 23,
+                  fontFamily: 'Poppins-Regular',
+                  marginHorizontal: 15,
+                }}>
+                Alarm Status
+              </Text>
+            </View>
+            <View>
+              <Text>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A
+                vitae, minus consectetur modi temporibus mollitia quod dolor
+                dolorem quisquam fugit unde minima dignissimos laborum itaque
+                perferendis omnis velit. Aperiam, praesentium!
+              </Text>
+            </View>
           </View>
 
           <View
@@ -117,9 +131,10 @@ const HomeScreen = ({navigation}) => {
               </View>
             </View>
           </View>
-        </ScrollView>
+          {/* </ScrollView> */}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

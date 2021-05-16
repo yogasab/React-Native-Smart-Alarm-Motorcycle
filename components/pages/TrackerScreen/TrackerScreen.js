@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Linking,
   ActivityIndicator,
+  PermissionsAndroid,
 } from 'react-native';
 import MapView, {Callout, Circle, Marker} from 'react-native-maps';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -20,6 +21,15 @@ const initialState = {
 
 const TrackerScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(initialState);
+  const [batasAtas, setBatasAtas] = useState(1);
+
+  const onMapReady = () => {
+    PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    ).then(granted => {
+      setBatasAtas(0);
+    });
+  };
 
   useEffect(() => {
     Geolocation.getCurrentPosition(
@@ -44,12 +54,14 @@ const TrackerScreen = () => {
   // console.log(pin);
   // console.log(region);
   // console.log(wodkowmdowdm);
+  // console.log(batasAtas);
 
   return currentPosition.latitude ? (
-    <View style={styles.container}>
+    <View style={{flex: 1, backgroundColor: '#fff', paddingTop: batasAtas}}>
       <MapView
         provider="google"
         style={styles.map}
+        onMapReady={onMapReady}
         // style={{flex: 1}}
         initialRegion={currentPosition}
         showsUserLocation={true}
@@ -85,10 +97,11 @@ const TrackerScreen = () => {
 export default TrackerScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
+  // container: {
+  //   flex: 1,
+  //   backgroundColor: '#fff',
+  //   paddingTop: 1,
+  // },
   map: {
     // width: Dimensions.get('window').width,
     // height: Dimensions.get('window').height,

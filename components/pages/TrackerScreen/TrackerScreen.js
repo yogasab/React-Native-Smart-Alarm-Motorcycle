@@ -7,6 +7,7 @@ import {
   Linking,
   ActivityIndicator,
   PermissionsAndroid,
+  Alert,
 } from 'react-native';
 import MapView, {Callout, Circle, Marker} from 'react-native-maps';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -41,7 +42,11 @@ const TrackerScreen = () => {
           longitude,
         });
       },
-      error => alert(error.message),
+      error =>
+        Alert.alert(
+          'Lokasi Error',
+          'Nyalakan lokasi di ponsel anda lalu mulai ulang aplikasi',
+        ),
       {
         enableHighAccuracy: true,
         timeout: 20000,

@@ -196,6 +196,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'Roboto-Black',
     color: '#1E4E5F',
+    borderBottomWidth: 3,
+    borderBottomColor: 'lightgrey',
+    paddingHorizontal: 20,
   },
   titleWrapper: {
     marginHorizontal: 30,

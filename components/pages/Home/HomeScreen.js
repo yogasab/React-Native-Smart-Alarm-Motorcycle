@@ -16,7 +16,6 @@ const heightScreen = Dimensions.get('window').height;
 
 const HomeScreen = ({navigation}) => {
   const [data, setData] = useState([]);
-  const {status, nama, tanggalAlarm, waktuAlarm, alamat} = data;
   const fetchData = () => {
     let dataFirebase = firebase
       .database()
@@ -30,10 +29,6 @@ const HomeScreen = ({navigation}) => {
     fetchData();
   }, []);
 
-  let keyFirebase = [];
-  if (data) {
-    keyFirebase = Object.keys(data);
-  }
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -46,14 +41,30 @@ const HomeScreen = ({navigation}) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                <Title style={styles.titleWelcome}>{`Hello,\n${nama} `}</Title>
+                <Title
+                  style={styles.titleWelcome}>{`Hello\n${data.nama} `}</Title>
                 <Image
                   style={styles.logo}
                   source={require('../../../assets/images/welcome.png')}
                 />
               </View>
             ) : (
-              <Title style={styles.title}>Loading ...</Title>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Title
+                  style={[
+                    styles.titleWelcome,
+                    {marginHorizontal: 100, fontSize: 45},
+                  ]}>{`Hello`}</Title>
+                <Image
+                  style={styles.logo}
+                  source={require('../../../assets/images/welcome.png')}
+                />
+              </View>
             )}
           </View>
         </View>
@@ -62,28 +73,25 @@ const HomeScreen = ({navigation}) => {
           <View style={styles.titleWrapper}>
             <Title style={styles.titleLog}>Alarm History</Title>
           </View>
-          {/* <ScrollView> */}
 
+          {/* Smart Card Status */}
           <View
             style={{marginLeft: 30, flexDirection: 'row', marginBottom: 10}}>
             {data ? (
               <LogActivity
-                status={status}
-                date={tanggalAlarm}
-                time={waktuAlarm}
+                status={data.status}
+                date={data.tanggalAlarm}
+                time={data.waktuAlarm}
               />
             ) : (
-              <LogActivity status="Loading" date="Loading" time="Loading" />
+              <LogActivity status="Loading" date="" time="" />
             )}
           </View>
 
+          {/* Alarm Status */}
           <View
             style={{
-              // alignItems: 'center',
-              // justifyContent: 'center',
-              // alignContent: 'center',
               marginVertical: -60,
-              // paddingBottom: 50,
               marginBottom: 30,
               marginHorizontal: 30,
               borderRadius: 10,
@@ -109,6 +117,7 @@ const HomeScreen = ({navigation}) => {
             </View>
           </View>
 
+          {/* Last Location */}
           <View
             style={{
               marginLeft: 30,
@@ -125,14 +134,19 @@ const HomeScreen = ({navigation}) => {
                   color="#FFFFFF"
                 />
               </View>
-              <View style={styles.itemLocationWrapper}>
-                {/* <Text style={styles.textAlamat}>{alamat}</Text> */}
-                <Text style={styles.text}>{tanggalAlarm}</Text>
-                <Text style={styles.text}>{waktuAlarm}</Text>
-              </View>
+              {data ? (
+                <View style={styles.itemLocationWrapper}>
+                  <Text style={styles.text}>{data.tanggalAlarm}</Text>
+                  <Text style={styles.text}>{data.waktuAlarm}</Text>
+                </View>
+              ) : (
+                <View style={styles.itemLocationWrapper}>
+                  <Text style={styles.text}></Text>
+                  <Text style={styles.text}>OFF</Text>
+                </View>
+              )}
             </View>
           </View>
-          {/* </ScrollView> */}
         </View>
       </View>
     </ScrollView>

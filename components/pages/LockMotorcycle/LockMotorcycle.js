@@ -16,6 +16,7 @@ const heightScreen = Dimensions.get('window').height;
 
 const LockMotorcycle = ({navigation}) => {
   const [relay, setRelay] = useState('');
+  const {relayStatus, tanggalAlarm, waktuAlarm} = relay;
   const today = new Date();
   const todayDate =
     today.getDate() + '-' + today.getMonth() + '-' + today.getFullYear();
@@ -23,7 +24,7 @@ const LockMotorcycle = ({navigation}) => {
     today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
 
   const fetchDataRelay = () => {
-    let databaseRelayFirebase = firebase.database().ref('/' + 'RELAY');
+    let databaseRelayFirebase = firebase.database().ref('RELAY/');
     databaseRelayFirebase.on('value', snapshot => {
       setRelay(snapshot.val());
     });
@@ -32,9 +33,9 @@ const LockMotorcycle = ({navigation}) => {
   const handleAlarmOn = () => {
     firebase
       .database()
-      .ref('/')
+      .ref('RELAY/')
       .update({
-        RELAY: 'ON',
+        relayStatus: 'ON',
         tanggalAlarm: todayDate,
         waktuAlarm: todayHours,
       })
@@ -53,9 +54,9 @@ const LockMotorcycle = ({navigation}) => {
   const handleAlarmOff = () => {
     firebase
       .database()
-      .ref('/')
+      .ref('RELAY/')
       .update({
-        RELAY: 'OFF',
+        relayStatus: 'OFF',
         tanggalAlarm: todayDate,
         waktuAlarm: todayHours,
       })
@@ -80,7 +81,7 @@ const LockMotorcycle = ({navigation}) => {
       <View style={styles.upScreen}>
         <View style={styles.status}>
           <Text style={styles.textStatus}>Status</Text>
-          {relay == 'OFF' ? (
+          {relayStatus == 'OFF' ? (
             <Animated.Image
               style={styles.gambarOff}
               source={require('../../../assets/images/motor-off.png')}
@@ -91,7 +92,7 @@ const LockMotorcycle = ({navigation}) => {
               source={require('../../../assets/images/motor-on.png')}
             />
           )}
-          <Text style={styles.textCard}>{`Alarm ${relay}`}</Text>
+          <Text style={styles.textCard}>{`Alarm ${relayStatus}`}</Text>
         </View>
       </View>
 

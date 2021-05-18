@@ -42,7 +42,10 @@ const HomeScreen = ({navigation}) => {
                   alignItems: 'center',
                 }}>
                 <Title
-                  style={styles.titleWelcome}>{`Hello\n${data.nama} `}</Title>
+                  style={[styles.titleWelcome, {fontSize: 65, marginTop: 10}]}>
+                  {`Halo\n`}
+                  <Title style={styles.titleWelcome}>{`${data.nama}`}</Title>
+                </Title>
                 <Image
                   style={styles.logo}
                   source={require('../../../assets/images/welcome.png')}
@@ -94,25 +97,42 @@ const HomeScreen = ({navigation}) => {
               marginVertical: -60,
               marginBottom: 30,
               marginHorizontal: 30,
-              borderRadius: 10,
-              backgroundColor: 'lightgrey',
+              borderRadius: 15,
+              backgroundColor: '#006494',
             }}>
-            <View>
+            <View
+              style={{
+                borderBottomColor: '#FFFFFF',
+                borderBottomWidth: 2,
+                flexDirection: 'row',
+                marginTop: 7,
+              }}>
               <Text
                 style={{
+                  color: '#FFFFFF',
                   fontSize: 23,
                   fontFamily: 'Poppins-Regular',
-                  marginHorizontal: 15,
+                  marginLeft: 15,
+                  marginRight: 13,
                 }}>
                 Alarm Status
               </Text>
+              <Ionicons
+                name="md-power"
+                size={38}
+                style={styles.icon}
+                color="#FFFFFF"
+              />
             </View>
-            <View>
-              <Text style={{fontSize: 15, color: '#000'}}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A
-                vitae, minus consectetur modi temporibus mollitia quod dolor
-                dolorem quisquam fugit unde minima dignissimos laborum itaque
-                perferendis omnis velit. Aperiam, praesentium!
+            <View style={{marginVertical: 35, alignItems: 'center'}}>
+              <Text
+                style={{
+                  color: '#000',
+                  fontFamily: 'Poppins-SemiBold',
+                  fontSize: 35,
+                  color: '#FFFFFF',
+                }}>
+                ON
               </Text>
             </View>
           </View>
@@ -199,7 +219,7 @@ const styles = StyleSheet.create({
     marginVertical: -40,
   },
   icon: {
-    left: 85,
+    left: 90,
     bottom: 2,
   },
   locationWrapper: {

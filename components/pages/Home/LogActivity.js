@@ -12,7 +12,7 @@ const LogActivity = ({status, date, time}) => {
           <Title style={styles.titleStatus}>Smart Card</Title>
           <MaterialCommunityIcons
             style={styles.icon}
-            name="engine-outline"
+            name="card-account-details-outline"
             size={40}
             color="#FFFFFF"
           />
@@ -32,7 +32,7 @@ const LogActivity = ({status, date, time}) => {
           <Title style={styles.titleStatus}>Smart Card</Title>
           <MaterialCommunityIcons
             style={styles.icon}
-            name="engine-off-outline"
+            name="card-account-details-outline"
             size={40}
             color="#FFFFFF"
           />
@@ -105,12 +105,8 @@ const styles = StyleSheet.create({
     borderBottomColor: 'lightgrey',
     marginTop: -55,
     flexDirection: 'row',
-    // paddingTop: 20,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   titleStatus: {
-    // borderWidth: 1,
     color: '#FFFFFF',
     fontFamily: 'Poppins-Regular',
     fontSize: 22,

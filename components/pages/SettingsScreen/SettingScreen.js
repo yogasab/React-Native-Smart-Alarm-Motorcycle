@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import {Avatar, Caption, Title} from 'react-native-paper';
+import {Caption, Title} from 'react-native-paper';
 import {AuthContext} from '../Authentication/AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
@@ -46,11 +46,17 @@ const SettingScreen = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
         <View style={{flexDirection: 'row', marginTop: 20}}>
-          <Avatar.Image
+          {/* <Avatar.Image
             source={require('../../../assets/images/avatar.jpg')}
             size={80}
+          /> */}
+          <Icon
+            name="account-circle"
+            size={87}
+            color="#003554"
+            style={{marginBottom: -10}}
           />
-          <View style={{marginLeft: 20}}>
+          <View style={{marginLeft: 10, marginTop: 5}}>
             <Title
               style={[
                 styles.title,

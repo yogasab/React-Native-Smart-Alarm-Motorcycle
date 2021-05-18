@@ -67,41 +67,37 @@ const AccountSetting = ({navigation}) => {
       });
   };
 
-  const takePhotoFromCamera = () => {
-    console.log('Clicked');
-  };
-
   bs = React.createRef();
   fall = new Animated.Value(1);
 
-  renderInner = () => (
-    <View style={styles.panel}>
-      <View style={{alignItems: 'center'}}>
-        <Text style={styles.panelTitle}>Upload Photo</Text>
-        <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
-      </View>
-      <TouchableOpacity
-        style={styles.panelButton}
-        onPress={takePhotoFromCamera}>
-        <Text style={styles.panelButtonTitle}>Take from camera</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Choose from gallery</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => this.bs.current.snapTo(1)}
-        style={[styles.panelButton, {backgroundColor: '#1E4E5F'}]}>
-        <Text style={styles.panelButtonTitle}>Cancel</Text>
-      </TouchableOpacity>
-    </View>
-  );
-  renderHeader = () => (
-    <View style={styles.header}>
-      <View style={styles.panelHeader}>
-        <View style={styles.panelHandle}></View>
-      </View>
-    </View>
-  );
+  // renderInner = () => (
+  //   <View style={styles.panel}>
+  //     <View style={{alignItems: 'center'}}>
+  //       <Text style={styles.panelTitle}>Upload Photo</Text>
+  //       <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
+  //     </View>
+  //     <TouchableOpacity
+  //       style={styles.panelButton}
+  //       onPress={takePhotoFromCamera}>
+  //       <Text style={styles.panelButtonTitle}>Take from camera</Text>
+  //     </TouchableOpacity>
+  //     <TouchableOpacity style={styles.panelButton}>
+  //       <Text style={styles.panelButtonTitle}>Choose from gallery</Text>
+  //     </TouchableOpacity>
+  //     <TouchableOpacity
+  //       onPress={() => this.bs.current.snapTo(1)}
+  //       style={[styles.panelButton, {backgroundColor: '#1E4E5F'}]}>
+  //       <Text style={styles.panelButtonTitle}>Cancel</Text>
+  //     </TouchableOpacity>
+  //   </View>
+  // );
+  // renderHeader = () => (
+  //   <View style={styles.header}>
+  //     <View style={styles.panelHeader}>
+  //       <View style={styles.panelHandle}></View>
+  //     </View>
+  //   </View>
+  // );
   return (
     <View style={styles.container}>
       {/* Bottomsheet */}
@@ -122,7 +118,7 @@ const AccountSetting = ({navigation}) => {
         }}>
         {/* Avatar Profile */}
         <View style={{alignItems: 'center'}}>
-          <TouchableOpacity onPress={() => this.bs.current.snapTo(0)}>
+          {/* <TouchableOpacity onPress={() => this.bs.current.snapTo(0)}>
             <View style={styles.profileWrapper}>
               <ImageBackground
                 source={require('../../../assets/images/avatar.jpg')}
@@ -146,11 +142,11 @@ const AccountSetting = ({navigation}) => {
                 </View>
               </ImageBackground>
             </View>
-          </TouchableOpacity>
-          <Text
+          </TouchableOpacity> */}
+          {/* <Text
             style={{marginTop: 10, fontFamily: 'OpenSans-Bold', fontSize: 23}}>
             {nama}
-          </Text>
+          </Text> */}
           {/* <Text>{user.uid}</Text> */}
         </View>
         {/* Biodata Textinput */}

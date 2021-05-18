@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 import {Title} from 'react-native-paper';
-import LogActivity from './LogActivity';
+import SmartCardLog from './SmartCardLog';
 import firebase from '../../database/Firebase';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {notification} from '../../notifications/Notifikasi';
@@ -16,14 +16,22 @@ import {notification} from '../../notifications/Notifikasi';
 const heightScreen = Dimensions.get('window').height;
 
 const HomeScreen = () => {
-  const [data, setData] = useState([]);
-  const fetchData = () => {
+  const [data, setDataSmartcard] = useState([]);
+  const [dataRelay, setDataRelay] = useState([]);
+  const fetchDataSmartcard = () => {
     let dataFirebase = firebase
       .database()
       .ref('/' + 'RFID' + '/' + 'dataPengguna');
     dataFirebase.on('value', snapshot => {
-      setData(snapshot.val());
+      setDataSmartcard(snapshot.val());
       smartcardNotification();
+    });
+  };
+
+  const fetchAlarmRelay = () => {
+    let dataFirebase = firebase.database().ref('/' + 'RELAY');
+    dataFirebase.on('value', snapshot => {
+      setDataRelay(snapshot.val());
     });
   };
 
@@ -38,7 +46,8 @@ const HomeScreen = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchDataSmartcard();
+    fetchAlarmRelay();
   }, []);
 
   return (
@@ -93,13 +102,13 @@ const HomeScreen = () => {
           <View
             style={{marginLeft: 30, flexDirection: 'row', marginBottom: 10}}>
             {data ? (
-              <LogActivity
+              <SmartCardLog
                 status={data.status}
                 date={data.tanggalAlarm}
                 time={data.waktuAlarm}
               />
             ) : (
-              <LogActivity status="Loading" date="" time="" />
+              <SmartCardLog status="Loading" date="" time="" />
             )}
           </View>
 
@@ -143,9 +152,12 @@ const HomeScreen = () => {
                   fontFamily: 'Poppins-SemiBold',
                   fontSize: 35,
                   color: '#FFFFFF',
+                  marginTop: -10,
                 }}>
-                ON
+                {dataRelay.relayStatus}
               </Text>
+              <Text style={styles.text}>{dataRelay.tanggalAlarm}</Text>
+              <Text style={styles.text}>{dataRelay.waktuAlarm}</Text>
             </View>
           </View>
 
@@ -167,10 +179,7 @@ const HomeScreen = () => {
                 />
               </View>
               {data ? (
-                <View style={styles.itemLocationWrapper}>
-                  <Text style={styles.text}>{data.tanggalAlarm}</Text>
-                  <Text style={styles.text}>{data.waktuAlarm}</Text>
-                </View>
+                <View style={styles.itemLocationWrapper}></View>
               ) : (
                 <View style={styles.itemLocationWrapper}>
                   <Text style={styles.text}></Text>

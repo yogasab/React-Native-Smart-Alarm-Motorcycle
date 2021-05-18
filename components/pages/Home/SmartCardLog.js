@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Title} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const LogActivity = ({status, date, time}) => {
+const SmartCardLog = ({status, date, time}) => {
   if (status == '1') {
     status = 'ON';
     return (
@@ -47,7 +47,7 @@ const LogActivity = ({status, date, time}) => {
   }
 };
 
-export default LogActivity;
+export default SmartCardLog;
 
 const styles = StyleSheet.create({
   item: {

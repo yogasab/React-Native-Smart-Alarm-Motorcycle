@@ -11,10 +11,11 @@ import {Title} from 'react-native-paper';
 import LogActivity from './LogActivity';
 import firebase from '../../database/Firebase';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {notification} from '../../notifications/Notifikasi';
 
 const heightScreen = Dimensions.get('window').height;
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
   const [data, setData] = useState([]);
   const fetchData = () => {
     let dataFirebase = firebase
@@ -22,7 +23,18 @@ const HomeScreen = ({navigation}) => {
       .ref('/' + 'RFID' + '/' + 'dataPengguna');
     dataFirebase.on('value', snapshot => {
       setData(snapshot.val());
+      smartcardNotification();
     });
+  };
+
+  const smartcardNotification = () => {
+    notification.configure();
+    notification.createChannel('1');
+    notification.sendNotification(
+      '1',
+      'Smart Alarm Motorcycle',
+      data ? 'Smartcard E-KTP ON' : 'Smartcard E-KTP OFF',
+    );
   };
 
   useEffect(() => {
@@ -196,7 +208,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   titleWelcome: {
-    // borderWidth: 1,
     fontSize: 35,
     fontFamily: 'Poppins-Regular',
     color: '#FFFFFF',

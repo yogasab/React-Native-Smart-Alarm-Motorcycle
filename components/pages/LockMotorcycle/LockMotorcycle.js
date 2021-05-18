@@ -16,7 +16,11 @@ const heightScreen = Dimensions.get('window').height;
 
 const LockMotorcycle = ({navigation}) => {
   const [relay, setRelay] = useState('');
-  const opacity = useState(new Animated.Value(0))[1];
+  const today = new Date();
+  const todayDate =
+    today.getDate() + '-' + today.getMonth() + '-' + today.getFullYear();
+  const todayHours =
+    today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
 
   const fetchDataRelay = () => {
     let databaseRelayFirebase = firebase.database().ref('/' + 'RELAY');
@@ -31,13 +35,10 @@ const LockMotorcycle = ({navigation}) => {
       .ref('/')
       .update({
         RELAY: 'ON',
+        tanggalAlarm: todayDate,
+        waktuAlarm: todayHours,
       })
       .then(() => {
-        Animated.timing(opacity, {
-          toValue: 1,
-          duration: 1000,
-          useNativeDriver: true,
-        });
         // Send Local Notifcations
         notification.configure();
         notification.createChannel('1');
@@ -55,13 +56,10 @@ const LockMotorcycle = ({navigation}) => {
       .ref('/')
       .update({
         RELAY: 'OFF',
+        tanggalAlarm: todayDate,
+        waktuAlarm: todayHours,
       })
       .then(() => {
-        Animated.timing(opacity, {
-          toValue: 0,
-          duration: 1000,
-          useNativeDriver: true,
-        });
         // Send Local Notifcations
         notification.configure();
         notification.createChannel('1');

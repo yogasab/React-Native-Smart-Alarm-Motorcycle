@@ -1,4 +1,5 @@
 import PushNotification, {Importance} from 'react-native-push-notification';
+// import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 class Notification {
   configure = () => {
@@ -8,7 +9,7 @@ class Notification {
       },
       onNotification: function (notification) {
         // console.log('NOTIFICATION:', notification);
-        notification.finish(PushNotificationIOS.FetchResult.NoData);
+        // notification.finish(PushNotificationIOS.FetchResult.NoData);
       },
       onAction: function (notification) {
         // console.log('ACTION:', notification.action);
@@ -18,6 +19,7 @@ class Notification {
       onRegistrationError: function (err) {
         // console.error(err.message, err);
       },
+      requestPermissions: Platform.OS === 'ios',
 
       permissions: {
         alert: true,

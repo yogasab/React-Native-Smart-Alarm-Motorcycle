@@ -41,7 +41,8 @@ const HomeScreen = () => {
     notification.sendNotification(
       '1',
       'Smart Alarm Motorcycle',
-      data ? 'Smartcard E-KTP ON' : 'Smartcard E-KTP OFF',
+      data.status == 1 ? 'Smartcard E-KTP ON' : 'Smartcard E-KTP OFF',
+      new Date().getHours() + ':' + new Date().getMinutes(),
     );
   };
 
@@ -145,7 +146,7 @@ const HomeScreen = () => {
                 color="#FFFFFF"
               />
             </View>
-            <View style={{marginVertical: 35, alignItems: 'center'}}>
+            <View style={{marginVertical: 20, alignItems: 'center'}}>
               <Text
                 style={{
                   color: '#000',
@@ -165,7 +166,7 @@ const HomeScreen = () => {
           <View
             style={{
               marginLeft: 30,
-              marginBottom: '90%',
+              marginBottom: '100%',
               // flex: 1,
             }}>
             <View style={styles.locationHistoryWrapper}>
@@ -239,7 +240,7 @@ const styles = StyleSheet.create({
     marginVertical: -40,
   },
   icon: {
-    left: 90,
+    left: 100,
     bottom: 2,
   },
   locationWrapper: {

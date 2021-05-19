@@ -47,6 +47,7 @@ const LockMotorcycle = ({navigation}) => {
           '1',
           'Smart Alarm Motorcycle',
           `Alarm ON please watch your surroundings`,
+          today.getHours() + ':' + today.getMinutes(),
         );
       });
   };
@@ -68,6 +69,7 @@ const LockMotorcycle = ({navigation}) => {
           '1',
           'Smart Alarm Motorcycle',
           `Alarm OFF please keep an eyes on motorcycle`,
+          today.getHours() + ':' + today.getMinutes(),
         );
       });
   };

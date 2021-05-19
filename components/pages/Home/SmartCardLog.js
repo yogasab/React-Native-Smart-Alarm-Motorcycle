@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   icon: {
-    left: 100,
+    left: 110,
     bottom: 2,
   },
   iconWrapper: {

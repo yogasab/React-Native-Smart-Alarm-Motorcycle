@@ -46,11 +46,12 @@ class Notification {
     );
   };
 
-  sendNotification = (channel, title, message) => {
+  sendNotification = (channel, title, message, subText) => {
     PushNotification.localNotification({
       channelId: channel, //
       title, // (optional)
       message, // (required)
+      subText,
     });
   };
 }

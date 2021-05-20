@@ -28,9 +28,9 @@ const SettingScreen = ({navigation}) => {
       .then(documentSnapshot => {
         if (documentSnapshot.exists) {
           // console.log('User Data', documentSnapshot.data());
-          setNama(documentSnapshot.data().name);
-          setNomorHP(documentSnapshot.data().phone);
-          setLokasi(documentSnapshot.data().location);
+          setNama(documentSnapshot.data().nama);
+          setNomorHP(documentSnapshot.data().nomorHP);
+          setLokasi(documentSnapshot.data().lokasi);
           setEmail(documentSnapshot.data().email);
           setMotor(documentSnapshot.data().motor);
         }
@@ -46,10 +46,6 @@ const SettingScreen = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
         <View style={{flexDirection: 'row', marginTop: 20}}>
-          {/* <Avatar.Image
-            source={require('../../../assets/images/avatar.jpg')}
-            size={80}
-          /> */}
           <Icon
             name="account-circle"
             size={87}
@@ -88,13 +84,13 @@ const SettingScreen = ({navigation}) => {
       </View>
 
       <View style={styles.menuWrapper}>
-        <View style={{borderWidth: 1, borderColor: '#dddddd'}} />
-        <TouchableOpacity onPress={() => navigation.navigate('AccountSetting')}>
+        {/* <View style={{borderWidth: 1, borderColor: '#dddddd'}} /> */}
+        {/* <TouchableOpacity onPress={() => navigation.navigate('AccountSetting')}>
           <View style={styles.menuItem}>
             <Icon name="account-edit" color="#1E4E5F" size={25} />
             <Text style={styles.menuItemText}>Account</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <View style={{borderWidth: 1, borderColor: '#dddddd'}} />
         <TouchableOpacity onPress={() => navigation.navigate('About')}>
           <View style={styles.menuItem}>

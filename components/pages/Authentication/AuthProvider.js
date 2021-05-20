@@ -22,7 +22,7 @@ export const AuthProvider = ({children, navigation}) => {
             setError(err.message);
           }
         },
-        register: async (email, password) => {
+        register: async (email, password, nama, motor, lokasi, nomorHP) => {
           try {
             await firebase
               .auth()
@@ -34,11 +34,15 @@ export const AuthProvider = ({children, navigation}) => {
                   .set({
                     email: email,
                     createdAt: firestore.Timestamp.fromDate(new Date()),
+                    nama,
+                    motor,
+                    lokasi,
+                    nomorHP,
                   })
                   .catch(error => {
                     console.log('Something error ', error);
                   });
-                console.log('User deleted!');
+                // console.log('User deleted!');
               });
           } catch (err) {
             setError(err.message);

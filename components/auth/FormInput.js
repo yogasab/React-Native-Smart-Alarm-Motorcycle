@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {windowHeight, windowWidth} from '../utilscreen/Dimensions';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {windowHeight} from '../utilscreen/Dimensions';
 
 const FormInput = ({labelValue, placeholderText, iconType, ...rest}) => {
   return (
     <View style={styles.inputContainer}>
       <View style={styles.iconStyle}>
-        <MaterialCommunityIcons name={iconType} size={20} color="#666" />
+        <FontAwesome5 name={iconType} size={20} color="#666" />
       </View>
       <TextInput
         value={labelValue}
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: windowHeight / 15,
     borderColor: '#ccc',
-    borderRadius: 3,
+    borderRadius: 7,
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',

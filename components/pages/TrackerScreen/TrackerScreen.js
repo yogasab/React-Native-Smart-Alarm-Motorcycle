@@ -12,6 +12,7 @@ import {
 import MapView, {Callout, Circle, Marker} from 'react-native-maps';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Geolocation from '@react-native-community/geolocation';
+import firebase from '../../database/Firebase';
 
 const initialState = {
   latitude: null,
@@ -23,6 +24,15 @@ const initialState = {
 const TrackerScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(initialState);
   const [batasAtas, setBatasAtas] = useState(1);
+  const [lokasiGmaps, setLokasiGmaps] = useState({});
+  const {lokasiGoogleMaps, latitude, longitude} = lokasiGmaps;
+
+  const fetchCurrentPostionGPS = () => {
+    let databaseFirebase = firebase.database().ref('/' + 'LOKASI');
+    databaseFirebase.on('value', snapshot => {
+      setLokasiGmaps(snapshot.val());
+    });
+  };
 
   const onMapReady = () => {
     PermissionsAndroid.request(
@@ -33,6 +43,7 @@ const TrackerScreen = () => {
   };
 
   useEffect(() => {
+    fetchCurrentPostionGPS();
     Geolocation.getCurrentPosition(
       position => {
         const {latitude, longitude} = position.coords;
@@ -55,11 +66,7 @@ const TrackerScreen = () => {
     );
   }, []);
 
-  // console.log(currentPosition);
-  // console.log(pin);
-  // console.log(region);
-  // console.log(wodkowmdowdm);
-  // console.log(batasAtas);
+  console.log(lokasiGoogleMaps);
 
   return currentPosition.latitude ? (
     <View style={{flex: 1, backgroundColor: '#fff', paddingTop: batasAtas}}>
@@ -73,12 +80,7 @@ const TrackerScreen = () => {
         showsCompass
         showsTraffic
         showsBuildings></MapView>
-      <TouchableOpacity
-        onPress={() =>
-          Linking.openURL(
-            'https://google.com/maps/place/-6.288286802637738,106.86544843905325',
-          )
-        }>
+      <TouchableOpacity onPress={() => Linking.openURL(lokasiGoogleMaps)}>
         <View style={styles.wrapperLocationTracker}>
           <View style={styles.iconWrapper}>
             <MaterialIcons

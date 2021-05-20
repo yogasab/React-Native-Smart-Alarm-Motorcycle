@@ -10,21 +10,27 @@ import {
 import {Title} from 'react-native-paper';
 import SmartCardLog from './SmartCardLog';
 import firebase from '../../database/Firebase';
+import firestore from '@react-native-firebase/firestore';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {notification} from '../../notifications/Notifikasi';
+import {useContext} from 'react';
+import {AuthContext} from '../Authentication/AuthProvider';
 
 const heightScreen = Dimensions.get('window').height;
 
 const HomeScreen = () => {
   const [data, setDataSmartcard] = useState([]);
   const [dataRelay, setDataRelay] = useState([]);
+  const [dataFirestore, setDataFirestore] = useState('');
+  const {user} = useContext(AuthContext);
+
   const fetchDataSmartcard = () => {
     let dataFirebase = firebase
       .database()
       .ref('/' + 'RFID' + '/' + 'dataPengguna');
     dataFirebase.on('value', snapshot => {
       setDataSmartcard(snapshot.val());
-      smartcardNotification();
+      // smartcardNotification();
     });
   };
 
@@ -46,9 +52,21 @@ const HomeScreen = () => {
     );
   };
 
+  const fetchDataFirestore = async () => {
+    await firestore()
+      .collection('users')
+      .doc(user.uid)
+      .get()
+      .then(documentSnapshot => {
+        if (documentSnapshot.exists) {
+          setDataFirestore(documentSnapshot.data().nama);
+        }
+      });
+  };
   useEffect(() => {
     fetchDataSmartcard();
     fetchAlarmRelay();
+    fetchDataFirestore();
   }, []);
 
   return (
@@ -56,41 +74,22 @@ const HomeScreen = () => {
       <View style={styles.container}>
         <View style={styles.upScreen}>
           <View style={styles.titleWrapperUp}>
-            {data ? (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Title
-                  style={[styles.titleWelcome, {fontSize: 65, marginTop: 10}]}>
-                  {`Halo\n`}
-                  <Title style={styles.titleWelcome}>{`${data.nama}`}</Title>
-                </Title>
-                <Image
-                  style={styles.logo}
-                  source={require('../../../assets/images/welcome.png')}
-                />
-              </View>
-            ) : (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Title
-                  style={[
-                    styles.titleWelcome,
-                    {marginHorizontal: 100, fontSize: 45},
-                  ]}>{`Hello`}</Title>
-                <Image
-                  style={styles.logo}
-                  source={require('../../../assets/images/welcome.png')}
-                />
-              </View>
-            )}
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Title
+                style={[styles.titleWelcome, {fontSize: 65, marginTop: 10}]}>
+                {`Halo\n`}
+                <Title style={styles.titleWelcome}>{`${dataFirestore}`}</Title>
+              </Title>
+              <Image
+                style={styles.logo}
+                source={require('../../../assets/images/welcome.png')}
+              />
+            </View>
           </View>
         </View>
 

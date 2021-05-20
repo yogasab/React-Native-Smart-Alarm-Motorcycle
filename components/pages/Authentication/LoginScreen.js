@@ -58,21 +58,6 @@ const LoginScreen = ({navigation}) => {
         onPress={() => login(email, password)}
       />
 
-      {/* <SocialButton
-        buttonTitle="Sign In with Google"
-        btnType="google"
-        color="#de4d41"
-        backgroundColor="#f5e7ea"
-        onPress={() => alert('Clicked')}
-      />
-      <SocialButton
-        buttonTitle="Sign In with Facebook"
-        btnType="facebook"
-        color="#4867aa"
-        backgroundColor="#e6eaf4"
-        onPress={() => alert('Clicked')}
-      /> */}
-
       <TouchableOpacity
         style={styles.forgotButton}
         onPress={() => navigation.navigate('SignUpScreen')}>
@@ -82,7 +67,7 @@ const LoginScreen = ({navigation}) => {
             fontSize: 18,
             fontFamily: 'Roboto-Medium',
           }}>
-          Doesn't have an account ? Create here
+          Tidak punya akun ? Silahkan mendaftar.
         </Text>
       </TouchableOpacity>
     </View>

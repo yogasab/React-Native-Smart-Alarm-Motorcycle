@@ -21,7 +21,10 @@ const heightScreen = Dimensions.get('window').height;
 const HomeScreen = () => {
   const [data, setDataSmartcard] = useState([]);
   const [dataRelay, setDataRelay] = useState([]);
+  const [dataLokasi, setDataLokasi] = useState([]);
   const [dataFirestore, setDataFirestore] = useState('');
+  // let latitude = dataLokasi.lokasiGoogleMaps.slice(30, 43);
+  // let longitude = dataLokasi.lokasiGoogleMaps.slice(50, 60);
   const {user} = useContext(AuthContext);
 
   const fetchDataSmartcard = () => {
@@ -30,7 +33,7 @@ const HomeScreen = () => {
       .ref('/' + 'RFID' + '/' + 'dataPengguna');
     dataFirebase.on('value', snapshot => {
       setDataSmartcard(snapshot.val());
-      // smartcardNotification();
+      smartcardNotification();
     });
   };
 
@@ -41,15 +44,11 @@ const HomeScreen = () => {
     });
   };
 
-  const smartcardNotification = () => {
-    notification.configure();
-    notification.createChannel('1');
-    notification.sendNotification(
-      '1',
-      'Smart Alarm Motorcycle',
-      data.status == 1 ? 'Smartcard E-KTP ON' : 'Smartcard E-KTP OFF',
-      new Date().getHours() + ':' + new Date().getMinutes(),
-    );
+  const fetchDataLokasi = () => {
+    let dataFirebase = firebase.database().ref('/' + 'LOKASI');
+    dataFirebase.once('value', snapshot => {
+      setDataLokasi(snapshot.val());
+    });
   };
 
   const fetchDataFirestore = async () => {
@@ -63,11 +62,26 @@ const HomeScreen = () => {
         }
       });
   };
+
+  const smartcardNotification = () => {
+    notification.configure();
+    notification.createChannel('1');
+    notification.sendNotification(
+      '1',
+      'Smart Alarm Motorcycle',
+      data ? 'Smartcard E-KTP ON' : 'Smartcard E-KTP OFF',
+      new Date().getHours() + ':' + new Date().getMinutes(),
+    );
+  };
   useEffect(() => {
     fetchDataSmartcard();
     fetchAlarmRelay();
     fetchDataFirestore();
+    fetchDataLokasi();
   }, []);
+
+  // console.log(dataLokasi.lokasiGoogleMaps.slice(30, 49));
+  // console.log(dataLokasi.lokasiGoogleMaps.slice(50, -1));
 
   return (
     <ScrollView>
@@ -178,12 +192,21 @@ const HomeScreen = () => {
                   color="#FFFFFF"
                 />
               </View>
-              {data ? (
-                <View style={styles.itemLocationWrapper}></View>
+              {dataLokasi ? (
+                <View style={styles.itemLocationWrapper}>
+                  <Text
+                    style={[
+                      styles.text,
+                      {marginVertical: 10, alignItems: 'center'},
+                    ]}>
+                    {dataLokasi.lokasiGoogleMaps}
+                  </Text>
+                  <Text style={styles.text}>{dataLokasi.tanggalPelacakan}</Text>
+                  <Text style={styles.text}>{dataLokasi.waktuPelacakan}</Text>
+                </View>
               ) : (
                 <View style={styles.itemLocationWrapper}>
                   <Text style={styles.text}></Text>
-                  <Text style={styles.text}>OFF</Text>
                 </View>
               )}
             </View>
@@ -265,7 +288,7 @@ const styles = StyleSheet.create({
   },
   itemLocationWrapper: {
     alignItems: 'center',
-    marginTop: 30,
+    // marginTop: -10,
     // borderWidth: 2,
     marginBottom: -100,
   },

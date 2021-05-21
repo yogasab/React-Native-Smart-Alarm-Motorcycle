@@ -25,7 +25,7 @@ const TrackerScreen = () => {
   const [currentPosition, setCurrentPosition] = useState(initialState);
   const [batasAtas, setBatasAtas] = useState(1);
   const [lokasiGmaps, setLokasiGmaps] = useState({});
-  const {lokasiGoogleMaps, latitude, longitude} = lokasiGmaps;
+  // let {lokasiGoogleMaps, latitude, longitude} = lokasiGmaps;
 
   const fetchCurrentPostionGPS = () => {
     let databaseFirebase = firebase.database().ref('/' + 'LOKASI');
@@ -66,7 +66,7 @@ const TrackerScreen = () => {
     );
   }, []);
 
-  console.log(lokasiGoogleMaps);
+  console.log(lokasiGmaps.lokasiGoogleMaps);
 
   return currentPosition.latitude ? (
     <View style={{flex: 1, backgroundColor: '#fff', paddingTop: batasAtas}}>
@@ -80,7 +80,12 @@ const TrackerScreen = () => {
         showsCompass
         showsTraffic
         showsBuildings></MapView>
-      <TouchableOpacity onPress={() => Linking.openURL(lokasiGoogleMaps)}>
+      <TouchableOpacity
+        onPress={() =>
+          Linking.openURL(
+            !lokasiGmaps ? alert('Mohon tunggu') : lokasiGmaps.lokasiGoogleMaps,
+          )
+        }>
         <View style={styles.wrapperLocationTracker}>
           <View style={styles.iconWrapper}>
             <MaterialIcons

@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   itemLeftOn: {
     alignItems: 'center',
-    marginBottom: -55,
+    marginBottom: -30,
   },
   statusOn: {
     marginTop: 20,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   iconWrapper: {
     borderBottomWidth: 2,
     borderBottomColor: 'lightgrey',
-    marginTop: -60,
+    marginTop: -70,
     flexDirection: 'row',
   },
   titleStatus: {

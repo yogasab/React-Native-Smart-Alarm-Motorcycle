@@ -46,7 +46,7 @@ const LockMotorcycle = ({navigation}) => {
         notification.sendNotification(
           '1',
           'Smart Alarm Motorcycle',
-          `Alarm ON please watch your surroundings`,
+          `Alarm ON | Mohon untuk perhatikan sekitar seopeda motor anda`,
           today.getHours() + ':' + today.getMinutes(),
         );
       });
@@ -68,7 +68,7 @@ const LockMotorcycle = ({navigation}) => {
         notification.sendNotification(
           '1',
           'Smart Alarm Motorcycle',
-          `Alarm OFF please keep an eyes on motorcycle`,
+          `Alarm OFF | Tetap awasi sepeda motor anda`,
           today.getHours() + ':' + today.getMinutes(),
         );
       });

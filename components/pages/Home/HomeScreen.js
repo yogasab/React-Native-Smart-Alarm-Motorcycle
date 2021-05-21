@@ -23,8 +23,6 @@ const HomeScreen = () => {
   const [dataRelay, setDataRelay] = useState([]);
   const [dataLokasi, setDataLokasi] = useState([]);
   const [dataFirestore, setDataFirestore] = useState('');
-  // let latitude = dataLokasi.lokasiGoogleMaps.slice(30, 43);
-  // let longitude = dataLokasi.lokasiGoogleMaps.slice(50, 60);
   const {user} = useContext(AuthContext);
 
   const fetchDataSmartcard = () => {
@@ -79,9 +77,6 @@ const HomeScreen = () => {
     fetchDataFirestore();
     fetchDataLokasi();
   }, []);
-
-  // console.log(dataLokasi.lokasiGoogleMaps.slice(30, 49));
-  // console.log(dataLokasi.lokasiGoogleMaps.slice(50, -1));
 
   return (
     <ScrollView>

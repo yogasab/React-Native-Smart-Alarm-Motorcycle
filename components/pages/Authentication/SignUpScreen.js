@@ -102,7 +102,7 @@ const SignUpScreen = ({navigation}) => {
         <FormButton
           buttonTitle="Sign up"
           onPress={() =>
-            register(email, password, name, motor, location, motor, nomorHP)
+            register(email, password, name, motor, location, nomorHP)
           }
         />
 

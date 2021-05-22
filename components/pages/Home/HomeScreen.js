@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // marginTop: -10,
     // borderWidth: 2,
-    marginBottom: -55,
+    // marginBottom: -55,
   },
   text: {
     color: '#FFFFFF',

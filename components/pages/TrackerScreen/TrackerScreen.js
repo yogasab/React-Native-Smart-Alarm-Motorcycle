@@ -82,9 +82,9 @@ const TrackerScreen = () => {
         showsBuildings></MapView>
       <TouchableOpacity
         onPress={() =>
-          Linking.openURL(
-            !lokasiGmaps ? alert('Mohon tunggu') : lokasiGmaps.lokasiGoogleMaps,
-          )
+          lokasiGmaps
+            ? Linking.openURL(lokasiGmaps.lokasiGoogleMaps)
+            : Alert.alert('Sensor GPS Info', 'Tidak ada data dari Sensor GPS')
         }>
         <View style={styles.wrapperLocationTracker}>
           <View style={styles.iconWrapper}>

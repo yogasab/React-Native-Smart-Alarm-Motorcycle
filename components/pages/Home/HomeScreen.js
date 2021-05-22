@@ -31,7 +31,7 @@ const HomeScreen = () => {
       .ref('/' + 'RFID' + '/' + 'dataPengguna');
     dataFirebase.on('value', snapshot => {
       setDataSmartcard(snapshot.val());
-      smartcardNotification();
+      // smartcardNotification();
     });
   };
 
@@ -61,16 +61,16 @@ const HomeScreen = () => {
       });
   };
 
-  const smartcardNotification = () => {
-    notification.configure();
-    notification.createChannel('1');
-    notification.sendNotification(
-      '1',
-      'Smart Alarm Motorcycle',
-      data ? 'Smartcard E-KTP ON' : 'Smartcard E-KTP OFF',
-      new Date().getHours() + ':' + new Date().getMinutes(),
-    );
-  };
+  // const smartcardNotification = () => {
+  //   notification.configure();
+  //   notification.createChannel('1');
+  //   notification.sendNotification(
+  //     '1',
+  //     'Smart Alarm Motorcycle',
+  //     data ? 'Smartcard E-KTP ON' : 'Smartcard E-KTP OFF',
+  //     new Date().getHours() + ':' + new Date().getMinutes(),
+  //   );
+  // };
   useEffect(() => {
     fetchDataSmartcard();
     fetchAlarmRelay();
@@ -109,7 +109,11 @@ const HomeScreen = () => {
 
           {/* Smart Card Status */}
           <View
-            style={{marginLeft: 30, flexDirection: 'row', marginBottom: 10}}>
+            style={{
+              marginLeft: 30,
+              flexDirection: 'row',
+              marginBottom: 10,
+            }}>
             {data ? (
               <SmartCardLog
                 status={data.status}
@@ -285,7 +289,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // marginTop: -10,
     // borderWidth: 2,
-    marginBottom: -100,
+    marginBottom: -55,
   },
   text: {
     color: '#FFFFFF',

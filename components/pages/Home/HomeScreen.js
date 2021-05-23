@@ -121,7 +121,11 @@ const HomeScreen = () => {
                 time={data.waktuAlarm}
               />
             ) : (
-              <SmartCardLog status="Loading" date="" time="" />
+              <SmartCardLog
+                status=""
+                date={dataRelay.tanggalAlarm}
+                time={dataRelay.waktuAlarm}
+              />
             )}
           </View>
 
@@ -165,7 +169,6 @@ const HomeScreen = () => {
                   fontFamily: 'Poppins-SemiBold',
                   fontSize: 35,
                   color: '#FFFFFF',
-                  marginTop: -10,
                 }}>
                 {dataRelay.relayStatus}
               </Text>
@@ -178,7 +181,7 @@ const HomeScreen = () => {
           <View
             style={{
               marginLeft: 30,
-              marginBottom: '100%',
+              marginBottom: '87%',
               // flex: 1,
             }}>
             <View style={styles.locationHistoryWrapper}>
@@ -205,7 +208,17 @@ const HomeScreen = () => {
                 </View>
               ) : (
                 <View style={styles.itemLocationWrapper}>
-                  <Text style={styles.text}></Text>
+                  <Text
+                    style={[
+                      styles.text,
+                      {
+                        marginTop: 40,
+                        fontFamily: 'OpenSanss-Bold',
+                        fontSize: 20,
+                      },
+                    ]}>
+                    Tidak ada data dari GPS
+                  </Text>
                 </View>
               )}
             </View>
@@ -279,7 +292,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   locationHistoryWrapper: {
-    // marginTop: -10,
     backgroundColor: '#003554',
     width: '90%',
     height: '70%',
@@ -287,9 +299,6 @@ const styles = StyleSheet.create({
   },
   itemLocationWrapper: {
     alignItems: 'center',
-    // marginTop: -10,
-    // borderWidth: 2,
-    // marginBottom: -55,
   },
   text: {
     color: '#FFFFFF',

@@ -2,7 +2,6 @@ import React, {useContext, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import FormButton from '../../auth/FormButton';
 import FormInput from '../../auth/FormInput';
-import SocialButton from '../../auth/SocialButton';
 import {AuthContext} from './AuthProvider';
 
 const LoginScreen = ({navigation}) => {
@@ -11,18 +10,6 @@ const LoginScreen = ({navigation}) => {
 
   const {login, error} = useContext(AuthContext);
 
-  // const signInUser = async () => {
-  //   try {
-  //     const response = await Firebase.auth().signInWithEmailAndPassword(
-  //       email,
-  //       password,
-  //     );
-  //     // Alert.alert('Sign Up Succes')
-  //     navigation.navigate('Home');
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
   return (
     <View style={styles.container}>
       <Image
@@ -36,7 +23,7 @@ const LoginScreen = ({navigation}) => {
         labelValue={email}
         onChangeText={userEmail => setEmail(userEmail)}
         placeholderText="Email"
-        iconType="account"
+        iconType="envelope"
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}

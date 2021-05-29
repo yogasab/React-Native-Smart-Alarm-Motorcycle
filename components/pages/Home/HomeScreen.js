@@ -26,9 +26,7 @@ const HomeScreen = () => {
   const {user} = useContext(AuthContext);
 
   const fetchDataSmartcard = () => {
-    let dataFirebase = firebase
-      .database()
-      .ref('/' + 'RFID' + '/' + 'dataPengguna');
+    let dataFirebase = firebase.database().ref('/' + 'dataE-KTP' + '/');
     dataFirebase.on('value', snapshot => {
       setDataSmartcard(snapshot.val());
       // smartcardNotification();
@@ -36,14 +34,14 @@ const HomeScreen = () => {
   };
 
   const fetchAlarmRelay = () => {
-    let dataFirebase = firebase.database().ref('/' + 'RELAY');
+    let dataFirebase = firebase.database().ref('/' + 'dataRelay' + '/');
     dataFirebase.on('value', snapshot => {
       setDataRelay(snapshot.val());
     });
   };
 
   const fetchDataLokasi = () => {
-    let dataFirebase = firebase.database().ref('/' + 'LOKASI');
+    let dataFirebase = firebase.database().ref('/' + 'dataLokasi');
     dataFirebase.once('value', snapshot => {
       setDataLokasi(snapshot.val());
     });
@@ -116,7 +114,7 @@ const HomeScreen = () => {
             }}>
             {data ? (
               <SmartCardLog
-                status={data.status}
+                status={data.statusModul}
                 date={data.tanggalAlarm}
                 time={data.waktuAlarm}
               />

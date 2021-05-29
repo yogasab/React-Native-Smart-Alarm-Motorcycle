@@ -24,7 +24,7 @@ const LockMotorcycle = ({navigation}) => {
     today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
 
   const fetchDataRelay = () => {
-    let databaseRelayFirebase = firebase.database().ref('RELAY/');
+    let databaseRelayFirebase = firebase.database().ref('dataRelay/');
     databaseRelayFirebase.on('value', snapshot => {
       setRelay(snapshot.val());
     });
@@ -33,7 +33,7 @@ const LockMotorcycle = ({navigation}) => {
   const handleAlarmOn = () => {
     firebase
       .database()
-      .ref('RELAY/')
+      .ref('dataRelay/')
       .update({
         relayStatus: 'ON',
         tanggalAlarm: todayDate,
@@ -55,7 +55,7 @@ const LockMotorcycle = ({navigation}) => {
   const handleAlarmOff = () => {
     firebase
       .database()
-      .ref('RELAY/')
+      .ref('dataRelay/')
       .update({
         relayStatus: 'OFF',
         tanggalAlarm: todayDate,

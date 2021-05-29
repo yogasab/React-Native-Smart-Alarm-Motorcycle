@@ -28,7 +28,7 @@ const TrackerScreen = () => {
   // let {lokasiGoogleMaps, latitude, longitude} = lokasiGmaps;
 
   const fetchCurrentPostionGPS = () => {
-    let databaseFirebase = firebase.database().ref('/' + 'LOKASI');
+    let databaseFirebase = firebase.database().ref('/' + 'dataLokasi');
     databaseFirebase.on('value', snapshot => {
       setLokasiGmaps(snapshot.val());
     });
@@ -65,8 +65,6 @@ const TrackerScreen = () => {
       },
     );
   }, []);
-
-  console.log(lokasiGmaps.lokasiGoogleMaps);
 
   return currentPosition.latitude ? (
     <View style={{flex: 1, backgroundColor: '#fff', paddingTop: batasAtas}}>

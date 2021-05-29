@@ -15,11 +15,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {notification} from '../../notifications/Notifikasi';
 import {useContext} from 'react';
 import {AuthContext} from '../Authentication/AuthProvider';
+import AlarmStatusLog from './AlarmStatusLog';
 
 const heightScreen = Dimensions.get('window').height;
 
 const HomeScreen = () => {
-  const [data, setDataSmartcard] = useState([]);
+  const [dataSmartCard, setDataSmartcard] = useState([]);
   const [dataRelay, setDataRelay] = useState([]);
   const [dataLokasi, setDataLokasi] = useState([]);
   const [dataFirestore, setDataFirestore] = useState('');
@@ -42,7 +43,7 @@ const HomeScreen = () => {
 
   const fetchDataLokasi = () => {
     let dataFirebase = firebase.database().ref('/' + 'dataLokasi');
-    dataFirebase.once('value', snapshot => {
+    dataFirebase.on('value', snapshot => {
       setDataLokasi(snapshot.val());
     });
   };
@@ -59,16 +60,6 @@ const HomeScreen = () => {
       });
   };
 
-  // const smartcardNotification = () => {
-  //   notification.configure();
-  //   notification.createChannel('1');
-  //   notification.sendNotification(
-  //     '1',
-  //     'Smart Alarm Motorcycle',
-  //     data ? 'Smartcard E-KTP ON' : 'Smartcard E-KTP OFF',
-  //     new Date().getHours() + ':' + new Date().getMinutes(),
-  //   );
-  // };
   useEffect(() => {
     fetchDataSmartcard();
     fetchAlarmRelay();
@@ -112,68 +103,27 @@ const HomeScreen = () => {
               flexDirection: 'row',
               marginBottom: 10,
             }}>
-            {data ? (
+            {dataSmartCard ? (
               <SmartCardLog
-                status={data.statusModul}
-                date={data.tanggalAlarm}
-                time={data.waktuAlarm}
+                status={dataSmartCard.statusModul}
+                date={dataSmartCard.tanggalAlarm}
+                time={dataSmartCard.waktuAlarm}
               />
             ) : (
               <SmartCardLog
                 status=""
-                date={dataRelay.tanggalAlarm}
-                time={dataRelay.waktuAlarm}
+                date={dataSmartCard.tanggalAlarm}
+                time={dataSmartCard.waktuAlarm}
               />
             )}
           </View>
 
           {/* Alarm Status */}
-          <View
-            style={{
-              marginVertical: -60,
-              marginBottom: 30,
-              marginHorizontal: 30,
-              borderRadius: 15,
-              backgroundColor: '#006494',
-            }}>
-            <View
-              style={{
-                borderBottomColor: '#FFFFFF',
-                borderBottomWidth: 2,
-                flexDirection: 'row',
-                marginTop: 7,
-              }}>
-              <Text
-                style={{
-                  color: '#FFFFFF',
-                  fontSize: 23,
-                  fontFamily: 'Poppins-Regular',
-                  marginLeft: 15,
-                  marginRight: 13,
-                }}>
-                Alarm Status
-              </Text>
-              <Ionicons
-                name="md-power"
-                size={38}
-                style={styles.icon}
-                color="#FFFFFF"
-              />
-            </View>
-            <View style={{marginVertical: 20, alignItems: 'center'}}>
-              <Text
-                style={{
-                  color: '#000',
-                  fontFamily: 'Poppins-SemiBold',
-                  fontSize: 35,
-                  color: '#FFFFFF',
-                }}>
-                {dataRelay.relayStatus}
-              </Text>
-              <Text style={styles.text}>{dataRelay.tanggalAlarm}</Text>
-              <Text style={styles.text}>{dataRelay.waktuAlarm}</Text>
-            </View>
-          </View>
+          <AlarmStatusLog
+            status={dataRelay.relayStatus}
+            date={dataRelay.tanggalAlarm}
+            time={dataRelay.waktuAlarm}
+          />
 
           {/* Last Location */}
           <View

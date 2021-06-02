@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const AlarmStatusLog = ({status, date, time}) => {
-  if (status == 'ON') {
+  if (status == 'OFF') {
     return (
       <View
         style={{
@@ -11,7 +11,7 @@ const AlarmStatusLog = ({status, date, time}) => {
           marginBottom: 30,
           marginHorizontal: 30,
           borderRadius: 15,
-          backgroundColor: '#006494',
+          backgroundColor: '#FF5733',
         }}>
         <View
           style={{
@@ -60,7 +60,7 @@ const AlarmStatusLog = ({status, date, time}) => {
           marginBottom: 30,
           marginHorizontal: 30,
           borderRadius: 15,
-          backgroundColor: '#FF5733',
+          backgroundColor: '#006494',
         }}>
         <View
           style={{

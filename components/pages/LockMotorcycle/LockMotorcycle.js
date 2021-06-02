@@ -86,12 +86,12 @@ const LockMotorcycle = ({navigation}) => {
           {relayStatus == 'OFF' ? (
             <Animated.Image
               style={styles.gambarOff}
-              source={require('../../../assets/images/motor-off.png')}
+              source={require('../../../assets/images/motor-on.png')}
             />
           ) : (
             <Animated.Image
               style={styles.gambar}
-              source={require('../../../assets/images/motor-on.png')}
+              source={require('../../../assets/images/motor-off.png')}
             />
           )}
           <Text style={styles.textCard}>{`Alarm ${relayStatus}`}</Text>
@@ -138,12 +138,12 @@ const styles = StyleSheet.create({
   },
   gambar: {
     marginTop: 30,
-    width: 270,
-    height: 250,
+    width: 400,
+    height: 260,
   },
   gambarOff: {
     marginTop: 30,
-    width: 400,
+    width: 270,
     height: 250,
   },
   textStatus: {

@@ -28,7 +28,7 @@ const TrackerScreen = () => {
   // let {lokasiGoogleMaps, latitude, longitude} = lokasiGmaps;
 
   const fetchCurrentPostionGPS = () => {
-    let databaseFirebase = firebase.database().ref('/' + 'dataLokasi');
+    let databaseFirebase = firebase.database().ref('/' + 'dataLokasi' + '/');
     databaseFirebase.on('value', snapshot => {
       setLokasiGmaps(snapshot.val());
     });
@@ -81,7 +81,7 @@ const TrackerScreen = () => {
       <TouchableOpacity
         onPress={() =>
           lokasiGmaps
-            ? Linking.openURL(lokasiGmaps.lokasiGoogleMaps)
+            ? Linking.openURL(lokasiGmaps.linkGoogleMaps)
             : Alert.alert('Sensor GPS Info', 'Tidak ada data dari Sensor GPS')
         }>
         <View style={styles.wrapperLocationTracker}>

@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   iconWrapper: {
     borderBottomWidth: 2,
     borderBottomColor: 'lightgrey',
-    marginTop: -80,
+    marginTop: -85,
     flexDirection: 'row',
   },
   titleStatus: {

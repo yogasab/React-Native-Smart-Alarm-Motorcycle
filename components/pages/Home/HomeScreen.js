@@ -147,9 +147,9 @@ const HomeScreen = () => {
                   <Text
                     style={[
                       styles.text,
-                      {marginVertical: 10, alignItems: 'center'},
+                      {marginVertical: 20, alignItems: 'center', marginTop: 25},
                     ]}>
-                    {dataLokasi.lokasiGoogleMaps}
+                    {dataLokasi.linkGoogleMaps}
                   </Text>
                   <Text style={styles.text}>{dataLokasi.tanggalPelacakan}</Text>
                   <Text style={styles.text}>{dataLokasi.waktuPelacakan}</Text>

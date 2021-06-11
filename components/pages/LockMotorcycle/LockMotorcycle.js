@@ -18,8 +18,8 @@ const LockMotorcycle = ({navigation}) => {
   const [relay, setRelay] = useState('');
   const {relayStatus, tanggalAlarm, waktuAlarm} = relay;
   const today = new Date();
-  const todayDate =
-    today.getDate() + '-' + today.getMonth() + '-' + today.getFullYear();
+  const bulan = today.getMonth() + 1;
+  const todayDate = today.getFullYear() + '-' + bulan + '-' + today.getDate();
   const todayHours =
     today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
 
@@ -35,7 +35,7 @@ const LockMotorcycle = ({navigation}) => {
       .database()
       .ref('dataRelay/')
       .update({
-        relayStatus: 'OFF',
+        relayStatus: 'ON',
         tanggalAlarm: todayDate,
         waktuAlarm: todayHours,
       })
@@ -57,7 +57,7 @@ const LockMotorcycle = ({navigation}) => {
       .database()
       .ref('dataRelay/')
       .update({
-        relayStatus: 'ON',
+        relayStatus: 'OFF',
         tanggalAlarm: todayDate,
         waktuAlarm: todayHours,
       })
@@ -105,7 +105,7 @@ const LockMotorcycle = ({navigation}) => {
 
         <View style={styles.wrapperButton}>
           <View style={styles.wrapperOnButton}>
-            <TouchableOpacity onPress={handleAlarmOff} style={styles.onTouch}>
+            <TouchableOpacity onPress={handleAlarmOn} style={styles.onTouch}>
               <Image
                 style={styles.buttonLogo}
                 source={require('../../../assets/images/on-button.png')}
@@ -114,7 +114,7 @@ const LockMotorcycle = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.wrapperOffButton}>
-            <TouchableOpacity onPress={handleAlarmOn} style={styles.onTouch}>
+            <TouchableOpacity onPress={handleAlarmOff} style={styles.onTouch}>
               <Image
                 style={styles.buttonLogo}
                 source={require('../../../assets/images/off-button.png')}

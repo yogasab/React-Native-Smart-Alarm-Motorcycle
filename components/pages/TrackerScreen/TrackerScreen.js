@@ -77,11 +77,31 @@ const TrackerScreen = () => {
         showsUserLocation={true}
         showsCompass
         showsTraffic
-        showsBuildings></MapView>
+        showsBuildings>
+        {lokasiGmaps ? (
+          <Marker
+            coordinate={{
+              latitude: lokasiGmaps.latitude,
+              longitude: lokasiGmaps.longitude,
+            }}
+            title="My Motorcycle"
+          />
+        ) : (
+          <Marker
+            coordinate={{
+              latitude: currentPosition.latitude,
+              longitude: currentPosition.longitude,
+            }}
+            title="My Motorcycle"
+          />
+        )}
+      </MapView>
       <TouchableOpacity
         onPress={() =>
           lokasiGmaps
-            ? Linking.openURL(lokasiGmaps.linkGoogleMaps)
+            ? Linking.openURL(
+                `https://google.com/maps/place/${lokasiGmaps.latitude}/${lokasiGmaps.longitude}`,
+              )
             : Alert.alert('Sensor GPS Info', 'Tidak ada data dari Sensor GPS')
         }>
         <View style={styles.wrapperLocationTracker}>

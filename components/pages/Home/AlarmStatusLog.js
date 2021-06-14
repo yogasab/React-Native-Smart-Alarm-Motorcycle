@@ -7,7 +7,7 @@ const AlarmStatusLog = ({status, date, time}) => {
     return (
       <View
         style={{
-          marginVertical: -60,
+          marginVertical: -30,
           marginBottom: 30,
           marginHorizontal: 30,
           borderRadius: 15,
@@ -56,7 +56,7 @@ const AlarmStatusLog = ({status, date, time}) => {
     return (
       <View
         style={{
-          marginVertical: -60,
+          marginVertical: -30,
           marginBottom: 30,
           marginHorizontal: 30,
           borderRadius: 15,

@@ -66,6 +66,8 @@ const TrackerScreen = () => {
     );
   }, []);
 
+  console.log(lokasiGmaps.linkGoogleMaps);
+
   return currentPosition.latitude ? (
     <View style={{flex: 1, backgroundColor: '#fff', paddingTop: batasAtas}}>
       <MapView
@@ -99,9 +101,7 @@ const TrackerScreen = () => {
       <TouchableOpacity
         onPress={() =>
           lokasiGmaps
-            ? Linking.openURL(
-                `https://google.com/maps/place/${lokasiGmaps.latitude}/${lokasiGmaps.longitude}`,
-              )
+            ? Linking.openURL(lokasiGmaps.linkGoogleMaps)
             : Alert.alert('Sensor GPS Info', 'Tidak ada data dari Sensor GPS')
         }>
         <View style={styles.wrapperLocationTracker}>

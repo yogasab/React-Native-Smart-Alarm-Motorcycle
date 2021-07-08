@@ -101,9 +101,9 @@ const HomeScreen = () => {
             style={{
               marginLeft: 30,
               flexDirection: 'row',
-              marginBottom: 50,
+              marginBottom: -15,
             }}>
-            {/* {dataSmartCard ? (
+            {dataSmartCard ? (
               <SmartCardLog
                 status={dataSmartCard.statusModul}
                 date={dataSmartCard.tanggalAlarm}
@@ -115,7 +115,7 @@ const HomeScreen = () => {
                 date={dataSmartCard.tanggalAlarm}
                 time={dataSmartCard.waktuAlarm}
               />
-            )} */}
+            )}
           </View>
 
           {/* Alarm Status */}
@@ -129,7 +129,8 @@ const HomeScreen = () => {
           <View
             style={{
               marginLeft: 30,
-              marginBottom: '37%',
+              marginBottom: '90%',
+              // paddingBottom: '30%',
               // flex: 1,
             }}>
             <View style={styles.locationHistoryWrapper}>
@@ -247,6 +248,7 @@ const styles = StyleSheet.create({
   },
   itemLocationWrapper: {
     alignItems: 'center',
+    marginTop: 10,
   },
   text: {
     color: '#FFFFFF',

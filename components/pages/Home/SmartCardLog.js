@@ -52,7 +52,7 @@ export default SmartCardLog;
 const styles = StyleSheet.create({
   item: {
     width: '90%',
-    height: '70%',
+    height: '72%',
     marginTop: 5,
     backgroundColor: '#F36A1D',
     borderRadius: 20,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   itemOff: {
     width: '90%',
-    height: '70%',
+    height: '72%',
     marginTop: 5,
     backgroundColor: '#0582CA',
     borderRadius: 15,
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
   },
   itemLeftOn: {
     alignItems: 'center',
-    marginBottom: -70,
+    marginBottom: -80,
   },
   statusOn: {
-    marginTop: 20,
+    marginTop: 15,
     fontFamily: 'Poppins-SemiBold',
     fontSize: 35,
     color: '#FFFFFF',
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   iconWrapper: {
     borderBottomWidth: 2,
     borderBottomColor: 'lightgrey',
-    marginTop: -85,
+    marginTop: -110,
     flexDirection: 'row',
   },
   titleStatus: {

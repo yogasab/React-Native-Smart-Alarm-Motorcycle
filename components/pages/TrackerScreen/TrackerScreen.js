@@ -66,7 +66,7 @@ const TrackerScreen = () => {
     );
   }, []);
 
-  console.log(lokasiGmaps.linkGoogleMaps);
+  console.log(lokasiGmaps);
 
   return currentPosition.latitude ? (
     <View style={{flex: 1, backgroundColor: '#fff', paddingTop: batasAtas}}>

@@ -52,7 +52,7 @@ const LoginScreen = ({navigation}) => {
           style={{
             marginVertical: 12,
             fontSize: 18,
-            fontFamily: 'Roboto-Medium',
+            fontFamily: 'OpenSans-SemiBold',
           }}>
           Tidak punya akun ? Silahkan mendaftar.
         </Text>

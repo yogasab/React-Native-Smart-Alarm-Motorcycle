@@ -101,7 +101,7 @@ const HomeScreen = () => {
             style={{
               marginLeft: 30,
               flexDirection: 'row',
-              marginBottom: -15,
+              marginBottom: -55,
             }}>
             {dataSmartCard ? (
               <SmartCardLog
@@ -124,6 +124,33 @@ const HomeScreen = () => {
             date={dataRelay.tanggalAlarm}
             time={dataRelay.waktuAlarm}
           />
+
+          {/* Kecepatan perpindahan lokasi */}
+          <View
+            style={{
+              alignItems: 'center',
+              marginTop: -10,
+              marginBottom: 10,
+              borderWidth: 2,
+              marginHorizontal: 30,
+              borderRadius: 15,
+              backgroundColor: '#003554',
+            }}>
+            <View style={styles.modeParkirWrapper}>
+              <Title style={styles.titleStatus}>Mode Parkir</Title>
+              <Ionicons
+                name="md-speedometer-outline"
+                size={38}
+                style={(styles.icon, {marginLeft: 90})}
+                color="#FFFFFF"
+              />
+            </View>
+            <View style={styles.itemmodeParkirWrapper}>
+              <Text style={styles.textModeParkir}>
+                {dataLokasi.kecepatanPerpindahanLokasi} km/h
+              </Text>
+            </View>
+          </View>
 
           {/* Last Location */}
           <View
@@ -185,6 +212,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FBFCFE',
   },
+  modeParkirWrapper: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    paddingHorizontal: 24,
+    borderBottomColor: 'lightgrey',
+    marginVertical: 5,
+  },
+  itemmodeParkirWrapper: {
+    marginVertical: 25,
+    padding: 25,
+  },
+  textModeParkir: {
+    color: '#FFFFFF',
+    fontSize: 40,
+    fontWeight: 'bold',
+    marginTop: -10,
+  },
   upScreen: {
     height: heightScreen * 0.33,
     backgroundColor: '#1E4E5F',
@@ -242,13 +286,12 @@ const styles = StyleSheet.create({
   },
   locationHistoryWrapper: {
     backgroundColor: '#003554',
-    width: '90%',
-    height: '70%',
+    width: '92%',
+    height: '59%',
     borderRadius: 15,
   },
   itemLocationWrapper: {
     alignItems: 'center',
-    marginTop: 10,
   },
   text: {
     color: '#FFFFFF',

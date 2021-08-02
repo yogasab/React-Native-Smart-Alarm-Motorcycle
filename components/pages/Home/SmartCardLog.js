@@ -52,7 +52,7 @@ export default SmartCardLog;
 const styles = StyleSheet.create({
   item: {
     width: '90%',
-    height: '72%',
+    height: '65%',
     marginTop: 5,
     backgroundColor: '#F36A1D',
     borderRadius: 20,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   itemOff: {
     width: '90%',
-    height: '72%',
+    height: '65%',
     marginTop: 5,
     backgroundColor: '#0582CA',
     borderRadius: 15,

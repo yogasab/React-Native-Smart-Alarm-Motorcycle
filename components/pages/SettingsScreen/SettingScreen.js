@@ -84,13 +84,6 @@ const SettingScreen = ({navigation}) => {
       </View>
 
       <View style={styles.menuWrapper}>
-        {/* <View style={{borderWidth: 1, borderColor: '#dddddd'}} /> */}
-        {/* <TouchableOpacity onPress={() => navigation.navigate('AccountSetting')}>
-          <View style={styles.menuItem}>
-            <Icon name="account-edit" color="#1E4E5F" size={25} />
-            <Text style={styles.menuItemText}>Account</Text>
-          </View>
-        </TouchableOpacity> */}
         <View style={{borderWidth: 1, borderColor: '#dddddd'}} />
         <TouchableOpacity onPress={() => navigation.navigate('About')}>
           <View style={styles.menuItem}>

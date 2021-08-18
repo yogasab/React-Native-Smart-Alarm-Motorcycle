@@ -12,10 +12,10 @@ import SmartCardLog from './SmartCardLog';
 import firebase from '../../database/Firebase';
 import firestore from '@react-native-firebase/firestore';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {notification} from '../../notifications/Notifikasi';
 import {useContext} from 'react';
 import {AuthContext} from '../Authentication/AuthProvider';
 import AlarmStatusLog from './AlarmStatusLog';
+import {notification} from '../../notifications/Notifikasi';
 
 const heightScreen = Dimensions.get('window').height;
 
@@ -30,7 +30,6 @@ const HomeScreen = () => {
     let dataFirebase = firebase.database().ref('/' + 'dataE-KTP' + '/');
     dataFirebase.on('value', snapshot => {
       setDataSmartcard(snapshot.val());
-      // smartcardNotification();
     });
   };
 
@@ -56,6 +55,20 @@ const HomeScreen = () => {
       .then(documentSnapshot => {
         if (documentSnapshot.exists) {
           setDataFirestore(documentSnapshot.data().nama);
+          if (
+            dataLokasi.kecepatanPerpindahanLokasi > 15 &&
+            dataSmartCard.statusModul == 1
+          ) {
+            console.log('Masuk');
+            notification.configure();
+            notification.createChannel('1');
+            notification.sendNotification(
+              '1',
+              'Smart Alarm Motorcycle',
+              `Motor anda dicuri, segera aktifkan sistem pengaman!!`,
+              new Date().getHours() + ':' + new Date().getMinutes(),
+            );
+          }
         }
       });
   };

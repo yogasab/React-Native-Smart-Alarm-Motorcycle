@@ -6,6 +6,8 @@ import {
   StyleSheet,
   ScrollView,
   Image,
+  TouchableOpacity,
+  Linking,
 } from 'react-native';
 import {Title} from 'react-native-paper';
 import SmartCardLog from './SmartCardLog';
@@ -185,13 +187,24 @@ const HomeScreen = () => {
               </View>
               {dataLokasi ? (
                 <View style={styles.itemLocationWrapper}>
-                  <Text
-                    style={[
-                      styles.text,
-                      {marginVertical: 20, alignItems: 'center', marginTop: 25},
-                    ]}>
-                    {`https://google.com/maps/place/${dataLokasi.latitude}/${dataLokasi.longitude}`}
-                  </Text>
+                  <TouchableOpacity
+                    onPress={() =>
+                      dataLokasi
+                        ? Linking.openURL(dataLokasi.linkGoogleMaps)
+                        : ''
+                    }>
+                    <Text
+                      style={[
+                        styles.text,
+                        {
+                          marginVertical: 20,
+                          alignItems: 'center',
+                          marginTop: 25,
+                        },
+                      ]}>
+                      {`https://google.com/maps/place/${dataLokasi.latitude}/${dataLokasi.longitude}`}
+                    </Text>
+                  </TouchableOpacity>
                   <Text style={styles.text}>{dataLokasi.tanggalPelacakan}</Text>
                   <Text style={styles.text}>{dataLokasi.waktuPelacakan}</Text>
                 </View>

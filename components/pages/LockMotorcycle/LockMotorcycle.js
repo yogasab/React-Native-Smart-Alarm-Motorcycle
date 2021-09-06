@@ -137,14 +137,15 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   gambar: {
-    marginTop: 30,
-    width: 400,
-    height: 260,
+    marginTop: 15,
+    width: 300,
+    height: 160,
   },
   gambarOff: {
-    marginTop: 30,
-    width: 270,
-    height: 250,
+    marginTop: 15,
+    width: 175,
+    height: 160,
+    marginBottom: 5
   },
   textStatus: {
     fontFamily: 'OpenSans-Bold',
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
   textCard: {
     fontSize: 30,
     fontFamily: 'OpenSans-Bold',
-    marginTop: 20,
+    marginTop: 5,
     padding: 5,
     borderRadius: 5,
     paddingHorizontal: 15,
@@ -178,14 +179,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FBFCFE',
   },
   upScreen: {
-    height: heightScreen * 0.6,
+    // height: heightScreen * 0.33,
     backgroundColor: '#1E4E5F',
+    paddingBottom: 15,
+    marginBottom: 30,
   },
   downScreen: {
     backgroundColor: '#FBFCFE',
     flex: 1,
-    marginTop: -20,
-    borderRadius: 25,
+    // height: heightScreen * 0.33,
+    marginTop: -55,
+    borderRadius: 30,
   },
   title: {
     fontSize: 40,
@@ -204,7 +208,7 @@ const styles = StyleSheet.create({
   },
   titleWrapper: {
     marginHorizontal: 30,
-    marginTop: 20,
+    marginTop: 15,
     alignItems: 'center',
   },
   wrapperButton: {

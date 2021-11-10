@@ -22,3 +22,5 @@ Pada projek ini terdapat aplikasi yang dibuat untuk mengendalikan alarm pada sep
 ![Logout Setttings](https://user-images.githubusercontent.com/68288783/133915089-68dbc949-3e9d-410c-9860-314c2fe68467.jpg)
 # Repository Alat 
 https://github.com/yogasab/NodeMCU-Smart-Alarm-Motorcycle
+# Demo Aplikasi
+https://drive.google.com/file/d/1FgnfhMBYWo7VnerzZ9yfCPQjbcGqW0nh/view?usp=sharing
